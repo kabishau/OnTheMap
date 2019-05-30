@@ -39,6 +39,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B51AAFF229F73D400053C9C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4558F60C229EE989009250FE /* Student.swift */,
+				4558F60E229EEB51009250FE /* Instructor.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5B51AB00229F73E900053C9C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5B908FCD229E238500F843DA /* UserViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5B51AB01229F740900053C9C /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5B51AB02229F741200053C9C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5B908FD2229E238700F843DA /* Assets.xcassets */,
+				5B908FD4229E238700F843DA /* LaunchScreen.storyboard */,
+				5B908FCF229E238500F843DA /* Main.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		5B908FBF229E238500F843DA = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +92,12 @@
 		5B908FCA229E238500F843DA /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
-				5B908FCB229E238500F843DA /* AppDelegate.swift */,
-				5B908FCD229E238500F843DA /* UserViewController.swift */,
-				5B908FCF229E238500F843DA /* Main.storyboard */,
-				5B908FD2229E238700F843DA /* Assets.xcassets */,
-				5B908FD4229E238700F843DA /* LaunchScreen.storyboard */,
 				5B908FD7229E238700F843DA /* Info.plist */,
-				4558F60C229EE989009250FE /* Student.swift */,
-				4558F60E229EEB51009250FE /* Instructor.swift */,
+				5B908FCB229E238500F843DA /* AppDelegate.swift */,
+				5B51AAFF229F73D400053C9C /* Model */,
+				5B51AB01229F740900053C9C /* View */,
+				5B51AB00229F73E900053C9C /* Controller */,
+				5B51AB02229F741200053C9C /* Supporting Files */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";

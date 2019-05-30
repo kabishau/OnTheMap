@@ -1,16 +1,20 @@
 import Foundation
 
-struct Student {
+struct Student: Codable {
     
     let createdAt: String
-    let firstname: String
-    let lastname: String
+    let firstName: String
+    let lastName: String
     let latitude: Float
     let longitude: Float
-    let address: String
+    let mapString: String
     let mediaURL: String
-    let objectID: String
+    let objectId: String
     let uniqueKey: String
     let updatedAt: String
     
+}
+
+struct Students: Codable {
+    let results: [Student]
 }

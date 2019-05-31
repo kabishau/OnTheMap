@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4558F60D229EE989009250FE /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558F60C229EE989009250FE /* Student.swift */; };
+		45C6D0F122A1D1E800708138 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C6D0F022A1D1E800708138 /* MapViewController.swift */; };
 		45D269CA22A1BF35003A328C /* ParseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D269C922A1BF35003A328C /* ParseAPI.swift */; };
 		5B51AB04229F8BB300053C9C /* instructors.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B51AB03229F8BB300053C9C /* instructors.json */; };
 		5B908FCC229E238500F843DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B908FCB229E238500F843DA /* AppDelegate.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		4558F60C229EE989009250FE /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		45C6D0F022A1D1E800708138 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		45D269C922A1BF35003A328C /* ParseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseAPI.swift; sourceTree = "<group>"; };
 		5B51AB03229F8BB300053C9C /* instructors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = instructors.json; sourceTree = "<group>"; };
 		5B908FC8229E238500F843DA /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				5B908FCD229E238500F843DA /* UserViewController.swift */,
+				45C6D0F022A1D1E800708138 /* MapViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				5B908FCE229E238500F843DA /* UserViewController.swift in Sources */,
 				4558F60D229EE989009250FE /* Student.swift in Sources */,
 				45D269CA22A1BF35003A328C /* ParseAPI.swift in Sources */,
+				45C6D0F122A1D1E800708138 /* MapViewController.swift in Sources */,
 				5B908FCC229E238500F843DA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

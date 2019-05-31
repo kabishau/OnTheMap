@@ -1,0 +1,23 @@
+import UIKit
+import MapKit
+import CoreLocation
+
+class MapViewController: UIViewController {
+
+    @IBOutlet weak var mapView: MKMapView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let philadelphia = CLLocation(latitude: 39.9526, longitude: -75.1652)
+        let regionRadius: CLLocationDistance = 500000.0
+        let region = MKCoordinateRegion(center: philadelphia.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+        mapView.setRegion(region, animated: true)
+        
+        mapView.delegate = self
+    }
+}
+
+extension MapViewController: MKMapViewDelegate {
+    
+}

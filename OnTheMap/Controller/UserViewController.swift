@@ -21,6 +21,12 @@ class UserViewController: UIViewController {
         
         fetchJSON()
         
+        ParseAPI.getStudentLocations { (students, error) in
+            self.students = students
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
         
     }
     

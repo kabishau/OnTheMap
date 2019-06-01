@@ -15,6 +15,7 @@ class ParseAPI {
             let decoder = JSONDecoder()
             do {
                 let responseObject = try decoder.decode(Students.self, from: data)
+                print(responseObject.results)
                 completion(responseObject.results, nil)
             } catch {
                 completion([], error)

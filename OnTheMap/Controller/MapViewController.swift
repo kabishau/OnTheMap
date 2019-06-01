@@ -3,6 +3,8 @@ import MapKit
 import CoreLocation
 
 class MapViewController: UIViewController {
+    
+    let students = [Students]()
 
     @IBOutlet weak var mapView: MKMapView!
     

@@ -11,6 +11,10 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ParseAPI.getStudentLocations { (students, error) in
+            MemberModel.students += students
+        }
+        
         let philadelphia = CLLocation(latitude: 39.9526, longitude: -75.1652)
         let regionRadius: CLLocationDistance = 500000.0
         let region = MKCoordinateRegion(center: philadelphia.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)

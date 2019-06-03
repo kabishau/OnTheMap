@@ -38,8 +38,19 @@ extension MapViewController: MKMapViewDelegate {
         }
         
         // customize annotation here
-        annotationView?.glyphText = "👀"
+        annotationView?.canShowCallout = true
+        annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         
         return annotationView
     }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.rightCalloutAccessoryView {
+            let app = UIApplication.shared
+            if let toOpen = view.annotation?.subtitle! {
+                app.open(URL(string: toOpen)!, options: [:], completionHandler: nil)
+            }
+        }
+    }
+    
 }

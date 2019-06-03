@@ -43,4 +43,8 @@ extension Student: MKAnnotation {
     var title: String? {
         return firstName
     }
+    
+    var subtitle: String? {
+        return mediaURL
+    }
 }

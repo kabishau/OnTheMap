@@ -11,6 +11,7 @@ class MapViewController: UIViewController {
         
         ParseAPI.getStudentLocations { (students, error) in
             MemberModel.students += students
+            self.mapView.addAnnotations(MemberModel.students)
         }
         
         let philadelphia = CLLocation(latitude: 39.9526, longitude: -75.1652)
@@ -18,13 +19,8 @@ class MapViewController: UIViewController {
         let region = MKCoordinateRegion(center: philadelphia.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         mapView.setRegion(region, animated: true)
         mapView.delegate = self
-        mapView.addAnnotations(MemberModel.students)
-        
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        mapView.addAnnotations(MemberModel.students)
-    }
+
 }
 
 extension MapViewController: MKMapViewDelegate {

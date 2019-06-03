@@ -44,7 +44,9 @@ extension Student: MKAnnotation {
         return firstName
     }
     
+    /*
     var subtitle: String? {
         return mediaURL
     }
+    */
 }

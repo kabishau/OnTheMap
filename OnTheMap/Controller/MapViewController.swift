@@ -11,7 +11,10 @@ class MapViewController: UIViewController {
         
         ParseAPI.getStudentLocations { (students, error) in
             MemberModel.students += students
-            self.mapView.addAnnotations(MemberModel.students)
+            DispatchQueue.main.async {
+                self.mapView.addAnnotations(MemberModel.students)
+            }
+            
         }
         
         let philadelphia = CLLocation(latitude: 39.9526, longitude: -75.1652)
@@ -39,11 +42,16 @@ extension MapViewController: MKMapViewDelegate {
         
         // customize annotation here
         annotationView?.canShowCallout = true
-        annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        //TODO: - Custom icon of Ldn
+        //annotationView?.detailCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        annotationView?.leftCalloutAccessoryView = UIButton(type: .roundedRect)
+        
+        annotationView?.animatesWhenAdded = true
+        //annotationView?.isSelected = true
         
         return annotationView
     }
-    
+    /*
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.shared
@@ -52,5 +60,13 @@ extension MapViewController: MKMapViewDelegate {
             }
         }
     }
+    */
     
+    /*
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let ac = UIAlertController(title: view.annotation?.title ?? "Unknown", message: view.annotation?.subtitle ?? "Uknown", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
+    }
+    */
 }

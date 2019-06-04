@@ -116,30 +116,49 @@
             </objects>
             <point key="canvasLocation" x="2020" y="-461.01949025487261"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="wyH-tP-wqt">
             <objects>
-                <viewController id="jjO-8K-3ne" sceneMemberID="viewController">
+                <viewController id="jjO-8K-3ne" customClass="LoginViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pzg-yb-5sR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jRO-wN-58k">
+                                <rect key="frame" x="98" y="219" width="179" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JsI-1e-mvT">
+                                <rect key="frame" x="98" y="280" width="179" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nuc-C4-W9U">
-                                <rect key="frame" x="166" y="318" width="42" height="30"/>
+                                <rect key="frame" x="166" y="352" width="42" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Log in"/>
                                 <connections>
-                                    <segue destination="J06-S0-I4O" kind="show" id="cme-xU-8Ag"/>
+                                    <action selector="loginTapped:" destination="jjO-8K-3ne" eventType="touchUpInside" id="YBJ-Oe-MLQ"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="g0I-iQ-Tk5"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="jRO-wN-58k" id="gqN-Z9-GuY"/>
+                        <outlet property="passwordTextField" destination="JsI-1e-mvT" id="qbv-hd-nc5"/>
+                        <segue destination="J06-S0-I4O" kind="show" identifier="completeLogin" id="v3H-Wf-fAT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fnW-KL-4iJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="303" y="-55"/>
+            <point key="canvasLocation" x="230" y="-55"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="V7c-IC-Wad">

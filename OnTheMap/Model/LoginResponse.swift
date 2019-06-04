@@ -10,7 +10,7 @@ struct Session: Codable {
     let expiration: String
 }
 
-struct SessionResponse: Codable {
+struct LoginResponse: Codable {
     let account: Account
     let session: Session
 }

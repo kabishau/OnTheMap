@@ -37,7 +37,7 @@ class UdacityAPI {
             }
             let decoder = JSONDecoder()
             do {
-                let responseObject = try decoder.decode(SessionResponse.self, from: data)
+                let responseObject = try decoder.decode(LoginResponse.self, from: data)
                 if responseObject.account.registered {
                     completion(true, nil)
                 } else {

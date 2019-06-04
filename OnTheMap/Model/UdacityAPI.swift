@@ -31,7 +31,8 @@ class UdacityAPI {
         request.httpBody = try! JSONEncoder().encode(body)
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard let data = data else {
+            
+            guard let data = data?.subdata(in: 5..<data!.count) else {
                 completion(false, error)
                 return
             }

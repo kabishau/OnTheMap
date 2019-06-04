@@ -12,16 +12,6 @@ class UserViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
-        /* don't need because map vc is loaded first
-        ParseAPI.getStudentLocations { (students, error) in
-            MemberModel.students += students
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-        */
-        
     }
 }
 
@@ -45,6 +35,7 @@ extension UserViewController: UITableViewDataSource {
         cell.detailTextLabel?.text = student.mapString
         print(student.coordinate)
         print(student.mapString)
+        print(student.uniqueKey)
         
         return cell
     }

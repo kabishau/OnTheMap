@@ -66,6 +66,9 @@
                                 <rect key="frame" x="133" y="378" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Find Location"/>
+                                <connections>
+                                    <segue destination="Qiv-j7-Le2" kind="show" id="zQX-uZ-5Jc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -75,6 +78,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fGf-GK-lf0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3877.5999999999999" y="-97.601199400299862"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="JT5-fy-Ue6">
+            <objects>
+                <viewController id="Qiv-j7-Le2" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wn5-Ts-NnB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="adU-W7-9J2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="adU-W7-9J2" firstAttribute="trailing" secondItem="mxP-me-57P" secondAttribute="trailing" id="6k4-kK-KwV"/>
+                            <constraint firstItem="adU-W7-9J2" firstAttribute="bottom" secondItem="mxP-me-57P" secondAttribute="bottom" id="eZP-9Q-CZD"/>
+                            <constraint firstItem="adU-W7-9J2" firstAttribute="leading" secondItem="mxP-me-57P" secondAttribute="leading" id="wlk-jk-DcU"/>
+                            <constraint firstItem="adU-W7-9J2" firstAttribute="top" secondItem="wn5-Ts-NnB" secondAttribute="top" id="z3A-ev-Xyr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mxP-me-57P"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5c7-qf-e8m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4789.6000000000004" y="-100.29985007496252"/>
         </scene>
         <!--User View Controller-->
         <scene sceneID="6q7-Ec-d3z">
@@ -165,14 +194,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JsI-1e-mvT">
                                 <rect key="frame" x="98" y="280" width="179" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nuc-C4-W9U">
                                 <rect key="frame" x="166" y="352" width="42" height="30"/>

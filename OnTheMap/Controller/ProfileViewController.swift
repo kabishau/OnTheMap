@@ -6,6 +6,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
+        title = "Add Location"
 
         
     }

@@ -1,0 +1,22 @@
+{
+   "user":{  
+      "bio":null,
+      "_registered":true,
+      "linkedin_url":null,
+      "_image":null,
+      "guard":{  
+         "allowed_behaviors":[  
+            "register",
+            "view-public",
+            "view-short"
+         ]
+      },
+      "location":null,
+      "key":"76206232097",
+      "timezone":null,
+      "_image_url":null,
+      "nickname":"",
+      "website_url":null,
+      "occupation":null
+   }
+}

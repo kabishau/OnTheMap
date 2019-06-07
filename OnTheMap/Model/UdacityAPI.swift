@@ -15,11 +15,14 @@ class UdacityAPI {
         static let base = "https://onthemap-api.udacity.com/v1"
         
         case login
+        case postLocation
         
         var stringValue: String {
             switch self {
             case .login:
                 return Endpoints.base + "/session"
+            case .postLocation:
+                return Endpoints.base + "/StudentLocation"
             }
         }
         
@@ -75,7 +78,24 @@ class UdacityAPI {
     
     // post location method
     
-    func postLocation() {
+    func postLocation(completion: @escaping (Bool, Error?) -> Void) {
+        
+        var request = URLRequest(url: UdacityAPI.Endpoints.postLocation.url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let body = "".data(using: .utf8)
+        request.httpBody = body
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data?.subdata(in: 5..<data!.count) else {
+                completion(false, error)
+                return
+            }
+            print(String(data: data, encoding: .utf8)!)
+            completion(true, nil)
+            
+        }
+        task.resume()
         
     }
 }

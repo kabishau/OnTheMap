@@ -67,22 +67,27 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Find Location"/>
                                 <connections>
-                                    <segue destination="Qiv-j7-Le2" kind="show" id="zQX-uZ-5Jc"/>
+                                    <action selector="findLocationTapped:" destination="Q0H-c7-ViL" eventType="touchUpInside" id="T60-Xh-kQe"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Bxh-ot-t7P"/>
                     </view>
+                    <connections>
+                        <outlet property="locationTextField" destination="acL-LE-PGN" id="zcw-jr-cM6"/>
+                        <outlet property="profileUrl" destination="ePl-eq-2MN" id="8Ei-6E-yun"/>
+                        <segue destination="Qiv-j7-Le2" kind="show" identifier="LocationViewController" id="WjC-O9-v3R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fGf-GK-lf0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3877.5999999999999" y="-97.601199400299862"/>
         </scene>
-        <!--View Controller-->
+        <!--Location View Controller-->
         <scene sceneID="JT5-fy-Ue6">
             <objects>
-                <viewController id="Qiv-j7-Le2" sceneMemberID="viewController">
+                <viewController id="Qiv-j7-Le2" customClass="LocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wn5-Ts-NnB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -90,6 +95,14 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="adU-W7-9J2">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KGB-qo-EK6">
+                                <rect key="frame" x="163" y="552" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="FINISH"/>
+                                <connections>
+                                    <action selector="finishTapped:" destination="Qiv-j7-Le2" eventType="touchUpInside" id="LYV-0F-lPF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -100,6 +113,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mxP-me-57P"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="adU-W7-9J2" id="r8G-5Q-DA0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5c7-qf-e8m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -194,14 +210,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JsI-1e-mvT">
                                 <rect key="frame" x="98" y="280" width="179" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nuc-C4-W9U">
                                 <rect key="frame" x="166" y="352" width="42" height="30"/>

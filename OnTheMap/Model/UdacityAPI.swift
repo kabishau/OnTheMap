@@ -3,6 +3,13 @@ import Foundation
 
 class UdacityAPI {
     
+    struct Auth {
+        static var uniqueKey = ""
+        //static var isRegistered = false
+        static var sessionId = ""
+        //static var expiration = ""
+    }
+    
     enum Endpoints {
         
         static let base = "https://onthemap-api.udacity.com/v1"
@@ -39,7 +46,11 @@ class UdacityAPI {
             let decoder = JSONDecoder()
             do {
                 let responseObject = try decoder.decode(LoginResponse.self, from: data)
+                
                 if responseObject.account.registered {
+                    Auth.uniqueKey = responseObject.account.key
+                    print(Auth.uniqueKey)
+                    Auth.sessionId = responseObject.session.id
                     completion(true, nil)
                 } else {
                     completion(false, nil)
@@ -53,8 +64,18 @@ class UdacityAPI {
             
         }
         task.resume()
-        
-        
+    }
+    
+    
+    // get some public data for profile
+    // need class User
+    
+    // get instructors locations
+    // need class instuctor
+    
+    // post location method
+    
+    func postLocation() {
         
     }
 }

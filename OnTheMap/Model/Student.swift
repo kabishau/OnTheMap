@@ -4,15 +4,15 @@ import MapKit
 class Student: NSObject, Codable {
     
     let createdAt: String
-    let firstName: String
-    let lastName: String
-    let latitude: Double
-    let longitude: Double
-    let mapString: String
-    let mediaURL: String
+    var firstName: String
+    var lastName: String
+    var latitude: Double
+    var longitude: Double
+    var mapString: String
+    var mediaURL: String
     let objectId: String
     let uniqueKey: String
-    let updatedAt: String
+    var updatedAt: String
     
     init(createdAt: String, firstName: String, lastName: String, latitude: Double, longitude: Double, mapString: String, mediaURL: String, objectId: String, uniqueKey: String, updatedAt: String) {
         self.createdAt = createdAt

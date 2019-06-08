@@ -91,9 +91,8 @@ class UdacityAPI {
                 completion(true, nil)
             } catch {
                 print(error.localizedDescription)
+                completion(false, error)
             }
-            completion(true, nil)
-            
         }
         task.resume()
         

@@ -19,14 +19,15 @@ class LocationViewController: UIViewController {
         
         UdacityAPI.postLocation { (created, error) in
             if created {
-                print("Created")
+                //TODO: -  main queue? download data again or just add one annotation
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                //TODO: enable to post location
             }
-            //TODO: -  main queue? download data again or just add one annotation
-            self.dismiss(animated: true, completion: nil)
+            
         }
         
     }
-    // finish button that submit data on server and reload table and map view
     
     override func viewDidLoad() {
         super.viewDidLoad()

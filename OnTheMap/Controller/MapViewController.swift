@@ -9,11 +9,15 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add
-            , target: self, action: #selector(addNewLocation))
+        //navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewLocation))
+        //navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadLocations))
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewLocation)),
+            UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadLocations))
+        ]
         
         ParseAPI.getStudentLocations { (students, error) in
-            MemberModel.students += students
+            MemberModel.students = students
             DispatchQueue.main.async {
                 self.mapView.addAnnotations(MemberModel.students)
             }
@@ -35,6 +39,18 @@ class MapViewController: UIViewController {
         let navigationController = UINavigationController(rootViewController: profileViewController)
         //navigationController?.pushViewController(profileViewController, animated: true)
         present(navigationController, animated: true, completion: nil)
+    }
+    
+    @objc func reloadLocations() {
+        mapView.removeAnnotations(MemberModel.students)
+        MemberModel.students = []
+        
+        ParseAPI.getStudentLocations { (students, error) in
+            MemberModel.students = students
+            DispatchQueue.main.async {
+                self.mapView.addAnnotations(MemberModel.students)
+            }
+        }
     }
 
 }

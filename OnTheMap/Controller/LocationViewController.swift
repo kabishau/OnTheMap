@@ -10,6 +10,13 @@ class LocationViewController: UIViewController {
     
     @IBAction func finishTapped(_ sender: UIButton) {
         //TODO: - use real location and url
+        guard let location = location else {
+            print("there are no coordinates")
+            return
+        }
+        MemberModel.user.latitude = location.coordinate.latitude
+        MemberModel.user.longitude = location.coordinate.longitude
+        
         UdacityAPI.postLocation { (created, error) in
             if created {
                 print("Created")

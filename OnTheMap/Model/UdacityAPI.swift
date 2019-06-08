@@ -50,8 +50,8 @@ class UdacityAPI {
                 let responseObject = try decoder.decode(LoginResponse.self, from: data)
                 
                 if responseObject.account.registered {
-                    Auth.uniqueKey = responseObject.account.key
-                    print(Auth.uniqueKey)
+                    MemberModel.user.uniqueKey = responseObject.account.key
+                    print(MemberModel.user.uniqueKey)
                     Auth.sessionId = responseObject.session.id
                     completion(true, nil)
                 } else {
@@ -68,15 +68,6 @@ class UdacityAPI {
         task.resume()
     }
     
-    
-    // get some public data for profile
-    // need class User
-    
-    // get instructors locations
-    // need class instuctor
-    
-    // post location method
-    
     class func postLocation(completion: @escaping (Bool, Error?) -> Void) {
         
         var request = URLRequest(url: UdacityAPI.Endpoints.postLocation.url)
@@ -87,7 +78,7 @@ class UdacityAPI {
         let body = PostLocationRequest(uniqueKey: MemberModel.user.uniqueKey, firstName: MemberModel.user.firstName, lastName: MemberModel.user.lastName, mediaURL: MemberModel.user.mediaURL, mapString: MemberModel.user.mapString, latitude: MemberModel.user.latitude, longitude: MemberModel.user.longitude)
 
         request.httpBody = try! JSONEncoder().encode(body)
-        
+        print(body.uniqueKey)
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
                 completion(false, error)

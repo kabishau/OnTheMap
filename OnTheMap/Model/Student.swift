@@ -3,15 +3,15 @@ import MapKit
 
 class Student: NSObject, Codable {
     
-    let createdAt: String
+    var createdAt: String
     var firstName: String
     var lastName: String
     var latitude: Double
     var longitude: Double
     var mapString: String
     var mediaURL: String
-    let objectId: String
-    let uniqueKey: String
+    var objectId: String
+    var uniqueKey: String
     var updatedAt: String
     
     init(createdAt: String, firstName: String, lastName: String, latitude: Double, longitude: Double, mapString: String, mediaURL: String, objectId: String, uniqueKey: String, updatedAt: String) {

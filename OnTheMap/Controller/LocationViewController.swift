@@ -5,10 +5,18 @@ class LocationViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    var user: Student?
+    var location: CLLocation?
     
     
     @IBAction func finishTapped(_ sender: UIButton) {
+        //TODO: - use real location and url
+        UdacityAPI.postLocation { (created, error) in
+            if created {
+                print("Created")
+            }
+            //TODO: -  main queue? download data again or just add one annotation
+            self.dismiss(animated: true, completion: nil)
+        }
         
     }
     // finish button that submit data on server and reload table and map view
@@ -16,16 +24,16 @@ class LocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let regionRadius: CLLocationDistance = 100000.0
-        
-        guard let user = user else { return }
-        
-        
-        let region = MKCoordinateRegion(center: user.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
-        mapView.setRegion(region, animated: true)
         mapView.delegate = self
         
-        mapView.addAnnotation(user)
+        guard let location = location else { return }
+        let regionRadius: CLLocationDistance = 100000.0
+        let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+        mapView.setRegion(region, animated: true)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        mapView.addAnnotation(annotation)
 
     }
 }

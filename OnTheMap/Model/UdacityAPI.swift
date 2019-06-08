@@ -1,6 +1,5 @@
 import Foundation
 
-
 class UdacityAPI {
     
     struct Auth {
@@ -78,20 +77,30 @@ class UdacityAPI {
     
     // post location method
     
-    func postLocation(completion: @escaping (Bool, Error?) -> Void) {
+    class func postLocation(completion: @escaping (Bool, Error?) -> Void) {
         
         var request = URLRequest(url: UdacityAPI.Endpoints.postLocation.url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        let body = "".data(using: .utf8)
-        request.httpBody = body
+
+        // replace with convenience init
+        let body = PostLocationRequest(uniqueKey: MemberModel.user.uniqueKey, firstName: MemberModel.user.firstName, lastName: MemberModel.user.lastName, mediaURL: MemberModel.user.mediaURL, mapString: MemberModel.user.mapString, latitude: MemberModel.user.latitude, longitude: MemberModel.user.longitude)
+
+        request.httpBody = try! JSONEncoder().encode(body)
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard let data = data?.subdata(in: 5..<data!.count) else {
+            guard let data = data else {
                 completion(false, error)
                 return
             }
-            print(String(data: data, encoding: .utf8)!)
+            do {
+                let responseObject = try JSONDecoder().decode(PostLocationResponse.self, from: data)
+                MemberModel.user.createdAt = responseObject.createdAt
+                MemberModel.user.objectId = responseObject.objectId
+                completion(true, nil)
+            } catch {
+                print(error.localizedDescription)
+            }
             completion(true, nil)
             
         }

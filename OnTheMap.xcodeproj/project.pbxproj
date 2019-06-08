@@ -30,6 +30,7 @@
 		5B908FD1229E238500F843DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B908FCF229E238500F843DA /* Main.storyboard */; };
 		5B908FD3229E238700F843DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B908FD2229E238700F843DA /* Assets.xcassets */; };
 		5B908FD6229E238700F843DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B908FD4229E238700F843DA /* LaunchScreen.storyboard */; };
+		5B9543AC22AB4D2100AC40E3 /* PostLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9543AB22AB4D2100AC40E3 /* PostLocationResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		5B908FD2229E238700F843DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B908FD5229E238700F843DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B908FD7229E238700F843DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B9543AB22AB4D2100AC40E3 /* PostLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocationResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				5B51AB0522A61E3200053C9C /* LoginRequest.swift */,
 				5B51AB0922A62E2C00053C9C /* LoginResponse.swift */,
 				453746E622AAFF9C005804D8 /* PostLocationRequest.swift */,
+				5B9543AB22AB4D2100AC40E3 /* PostLocationResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				456660AB22A2ECE50051D01B /* MemberModel.swift in Sources */,
 				5B51AB0622A61E3200053C9C /* LoginRequest.swift in Sources */,
 				5B51AB0822A6233D00053C9C /* UdacityAPI.swift in Sources */,
+				5B9543AC22AB4D2100AC40E3 /* PostLocationResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

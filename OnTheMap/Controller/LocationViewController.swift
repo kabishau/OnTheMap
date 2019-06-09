@@ -17,16 +17,26 @@ class LocationViewController: UIViewController {
         MemberModel.user.latitude = location.coordinate.latitude
         MemberModel.user.longitude = location.coordinate.longitude
         
-        UdacityAPI.postLocation { (created, error) in
-            if created {
-                //TODO: -  main queue? download data again or just add one annotation
-                self.dismiss(animated: true, completion: nil)
-            } else {
-                //TODO: enable to post location
+        if MemberModel.user.objectId != "" {
+            UdacityAPI.updateLocation { (updated, error) in
+                if updated {
+                    print("updated")
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    //TODO: enable to update location
+                }
             }
-            
+        } else {
+            UdacityAPI.postLocation { (created, error) in
+                if created {
+                    print("created")
+                    //TODO: -  main queue? download data again or just add one annotation
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    //TODO: enable to post location
+                }
+            }
         }
-        
     }
     
     override func viewDidLoad() {
@@ -35,14 +45,14 @@ class LocationViewController: UIViewController {
         mapView.delegate = self
         
         guard let location = location else { return }
-        let regionRadius: CLLocationDistance = 100000.0
+        let regionRadius: CLLocationDistance = 500000.0
         let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         mapView.setRegion(region, animated: true)
         
         let annotation = MKPointAnnotation()
         annotation.coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         mapView.addAnnotation(annotation)
-
+        
     }
 }
 

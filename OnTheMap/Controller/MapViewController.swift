@@ -16,7 +16,7 @@ class MapViewController: UIViewController {
             UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(reloadLocations))
         ]
         
-        ParseAPI.getStudentLocations { (students, error) in
+        UdacityAPI.getStudentLocations { (students, error) in
             MemberModel.students = students
             DispatchQueue.main.async {
                 self.mapView.addAnnotations(MemberModel.students)
@@ -45,7 +45,7 @@ class MapViewController: UIViewController {
         mapView.removeAnnotations(MemberModel.students)
         MemberModel.students = []
         
-        ParseAPI.getStudentLocations { (students, error) in
+        UdacityAPI.getStudentLocations { (students, error) in
             MemberModel.students = students
             DispatchQueue.main.async {
                 self.mapView.addAnnotations(MemberModel.students)

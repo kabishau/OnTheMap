@@ -12,16 +12,18 @@ class UdacityAPI {
     enum Endpoints {
         
         static let base = "https://onthemap-api.udacity.com/v1"
-        //https://onthemap-api.udacity.com/v1/StudentLocation/8ZExGR5uX8
-        
+
         case login
+        case getLocations
         case postLocation
         case updateLocation
-        
+       
         var stringValue: String {
             switch self {
             case .login:
                 return Endpoints.base + "/session"
+            case .getLocations:
+                return Endpoints.base + "/StudentLocation" + "?limit=100&order=-updatedAt"
             case .postLocation:
                 return Endpoints.base + "/StudentLocation"
             case .updateLocation:
@@ -72,6 +74,24 @@ class UdacityAPI {
         task.resume()
     }
     
+    class func getStudentLocations(completion: @escaping ([Student], Error?) -> Void) {
+        
+        let task = URLSession.shared.dataTask(with: Endpoints.getLocations.url) { data, response, error in
+            guard let data = data else {
+                completion([], error)
+                return
+            }
+            let decoder = JSONDecoder()
+            do {
+                let responseObject = try decoder.decode(Students.self, from: data)
+                completion(responseObject.results, nil)
+            } catch {
+                completion([], error)
+            }
+        }
+        task.resume()
+    }
+    
     class func postLocation(completion: @escaping (Bool, Error?) -> Void) {
         
         var request = URLRequest(url: UdacityAPI.Endpoints.postLocation.url)
@@ -103,9 +123,7 @@ class UdacityAPI {
     }
     
     class func updateLocation(completion: @escaping (Bool, Error?) -> Void) {
-        // body
-        // encode
-        // url session
+
         var request = URLRequest(url: Endpoints.updateLocation.url)
         request.httpMethod = "PUT"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")

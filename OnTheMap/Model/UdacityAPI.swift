@@ -13,15 +13,14 @@ class UdacityAPI {
         
         static let base = "https://onthemap-api.udacity.com/v1/"
 
-        case login
+        case session
         case getLocations
         case postLocation
         case updateLocation
-        case logout
        
         var stringValue: String {
             switch self {
-            case .login:
+            case .session:
                 return Endpoints.base + "session"
             case .getLocations:
                 return Endpoints.base + "StudentLocation" + "?limit=100&order=-updatedAt"
@@ -29,8 +28,6 @@ class UdacityAPI {
                 return Endpoints.base + "StudentLocation"
             case .updateLocation:
                 return Endpoints.base + "StudentLocation/" + MemberModel.user.objectId
-            case .logout:
-                return Endpoints.base + "session"
             }
         }
         
@@ -41,7 +38,7 @@ class UdacityAPI {
     
     class func login(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
         
-        var request = URLRequest(url: Endpoints.login.url)
+        var request = URLRequest(url: Endpoints.session.url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -79,7 +76,7 @@ class UdacityAPI {
     
     class func logout(completion: @escaping (Bool, Error?) -> Void) {
         
-        var request = URLRequest(url: Endpoints.logout.url)
+        var request = URLRequest(url: Endpoints.session.url)
         request.httpMethod = "DELETE"
         
         var xsrfCookie: HTTPCookie? = nil

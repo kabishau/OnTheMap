@@ -21,6 +21,9 @@ class LocationViewController: UIViewController {
             UdacityAPI.updateLocation { (updated, error) in
                 if updated {
                     print("updated")
+                    //TODO: - Use firstIndex(where) to update location on array and update annotations
+                    // if there is no location - add user's location to array
+                    // if it exist - update it in array and in user
                     self.dismiss(animated: true, completion: nil)
                 } else {
                     //TODO: enable to update location

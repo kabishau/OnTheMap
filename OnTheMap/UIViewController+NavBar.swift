@@ -3,7 +3,7 @@ import UIKit
 extension UIViewController {
     
     func setupNavigationItem() {
-        self.navigationItem.title = "Test"
+        self.navigationItem.title = "On The Map"
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "LOGOUT", style: .plain, target: self, action: #selector(logout))
         navigationItem.rightBarButtonItems = [
@@ -13,9 +13,7 @@ extension UIViewController {
     }
     
     @objc func addNewLocation() {
-        // check if location already exist
-        // exist - show alert controller with question to override it
-        // doen't exist - new vc to enter it
+
         guard let profileViewController = storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController else { return }
         let navigationController = UINavigationController(rootViewController: profileViewController)
         //navigationController?.pushViewController(profileViewController, animated: true)

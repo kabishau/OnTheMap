@@ -135,8 +135,7 @@ class UdacityAPI {
         let body = PostLocationRequest(uniqueKey: MemberModel.user.uniqueKey, firstName: MemberModel.user.firstName, lastName: MemberModel.user.lastName, mediaURL: MemberModel.user.mediaURL, mapString: MemberModel.user.mapString, latitude: MemberModel.user.latitude, longitude: MemberModel.user.longitude)
 
         request.httpBody = try! JSONEncoder().encode(body)
-        print(body.uniqueKey)
-        print(MemberModel.user.objectId)
+
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
                 completion(false, error)
@@ -162,8 +161,7 @@ class UdacityAPI {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         let body = PostLocationRequest(uniqueKey: MemberModel.user.uniqueKey, firstName: MemberModel.user.firstName, lastName: MemberModel.user.lastName, mediaURL: MemberModel.user.mediaURL, mapString: MemberModel.user.mapString, latitude: MemberModel.user.latitude, longitude: MemberModel.user.longitude)
         request.httpBody = try! JSONEncoder().encode(body)
-        print(body.uniqueKey)
-        print(MemberModel.user.objectId)
+
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
                 completion(false, error)

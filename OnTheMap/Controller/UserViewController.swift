@@ -7,11 +7,19 @@ class UserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Udacity Students"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        setupNavigationItem()
         
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    @objc override func reloadLocations() {
+        UdacityAPI.getStudentLocations { (students, error) in
+            MemberModel.students = students
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
 }
 

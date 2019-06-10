@@ -29,6 +29,14 @@ extension UIViewController {
     }
     
     @objc func logout() {
-        
+        UdacityAPI.logout { (success, error) in
+            DispatchQueue.main.async {
+                if success {
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    //TODO: - It's not clear what to do here.
+                }
+            }
+        }
     }
 }

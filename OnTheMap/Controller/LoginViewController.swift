@@ -20,10 +20,14 @@ class LoginViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        emailTextField.text = ""
+        passwordTextField.text = ""
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emailTextField.text = ""
-        passwordTextField.text = ""
     }
 }

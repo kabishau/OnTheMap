@@ -3,31 +3,34 @@ import Foundation
 class UdacityAPI {
     
     struct Auth {
-        static var uniqueKey = ""
-        //static var isRegistered = false
+        
+        //static var uniqueKey = ""
         static var sessionId = ""
-        //static var expiration = ""
+        static var expiration = ""
     }
     
     enum Endpoints {
         
-        static let base = "https://onthemap-api.udacity.com/v1"
+        static let base = "https://onthemap-api.udacity.com/v1/"
 
         case login
         case getLocations
         case postLocation
         case updateLocation
+        case logout
        
         var stringValue: String {
             switch self {
             case .login:
-                return Endpoints.base + "/session"
+                return Endpoints.base + "session"
             case .getLocations:
-                return Endpoints.base + "/StudentLocation" + "?limit=100&order=-updatedAt"
+                return Endpoints.base + "StudentLocation" + "?limit=100&order=-updatedAt"
             case .postLocation:
-                return Endpoints.base + "/StudentLocation"
+                return Endpoints.base + "StudentLocation"
             case .updateLocation:
-                return Endpoints.base + "/StudentLocation/" + MemberModel.user.objectId
+                return Endpoints.base + "StudentLocation/" + MemberModel.user.objectId
+            case .logout:
+                return Endpoints.base + "session"
             }
         }
         
@@ -51,14 +54,14 @@ class UdacityAPI {
                 completion(false, error)
                 return
             }
-            let decoder = JSONDecoder()
+
             do {
-                let responseObject = try decoder.decode(LoginResponse.self, from: data)
+                let responseObject = try JSONDecoder().decode(LoginResponse.self, from: data)
                 
                 if responseObject.account.registered {
                     MemberModel.user.uniqueKey = responseObject.account.key
-                    print(MemberModel.user.uniqueKey)
                     Auth.sessionId = responseObject.session.id
+                    Auth.expiration = responseObject.session.expiration
                     completion(true, nil)
                 } else {
                     completion(false, nil)
@@ -70,6 +73,39 @@ class UdacityAPI {
                 completion(false, error)
             }
             
+        }
+        task.resume()
+    }
+    
+    class func logout(completion: @escaping (Bool, Error?) -> Void) {
+        
+        var request = URLRequest(url: Endpoints.logout.url)
+        request.httpMethod = "DELETE"
+        
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data?.subdata(in: 5..<data!.count) else {
+                completion(false, error)
+                return
+            }
+
+            do {
+                let reponseObject = try JSONDecoder().decode(LogoutResponse.self, from: data)
+                //TODO: - Do I need to do something here?
+                Auth.sessionId = ""
+                Auth.expiration = ""
+                completion(true, nil)
+            } catch {
+                completion(false, error)
+            }
         }
         task.resume()
     }

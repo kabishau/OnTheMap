@@ -14,3 +14,7 @@ struct LoginResponse: Codable {
     let account: Account
     let session: Session
 }
+
+struct LogoutResponse: Codable {
+    let session: Session
+}

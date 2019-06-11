@@ -19,6 +19,9 @@ class LoginViewController: UIViewController {
             }
         }
     }
+    @IBAction func signUpTapped(_ sender: UIButton) {
+        
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

@@ -205,30 +205,66 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jRO-wN-58k">
-                                <rect key="frame" x="98" y="219" width="179" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JsI-1e-mvT">
-                                <rect key="frame" x="98" y="280" width="179" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nuc-C4-W9U">
-                                <rect key="frame" x="166" y="352" width="42" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Log in"/>
-                                <connections>
-                                    <action selector="loginTapped:" destination="jjO-8K-3ne" eventType="touchUpInside" id="YBJ-Oe-MLQ"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="3gD-z8-tYz">
+                                <rect key="frame" x="67" y="222.5" width="241" height="222"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jRO-wN-58k">
+                                        <rect key="frame" x="0.0" y="0.0" width="241" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JsI-1e-mvT">
+                                        <rect key="frame" x="0.0" y="64" width="241" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nuc-C4-W9U">
+                                        <rect key="frame" x="0.0" y="128" width="241" height="30"/>
+                                        <color key="backgroundColor" red="0.14901960784313725" green="0.36862745098039218" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="LOG IN">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="loginTapped:" destination="jjO-8K-3ne" eventType="touchUpInside" id="YBJ-Oe-MLQ"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="o4r-Lo-8YX">
+                                        <rect key="frame" x="0.0" y="192" width="241" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udh-dU-UGs">
+                                                <rect key="frame" x="0.0" y="0.0" width="179" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y4n-BX-4I4">
+                                                <rect key="frame" x="187" y="0.0" width="54" height="30"/>
+                                                <state key="normal" title="Sign Up"/>
+                                                <connections>
+                                                    <action selector="signUpTapped:" destination="jjO-8K-3ne" eventType="touchUpInside" id="I3G-lK-JT0"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="dGa-AR-3T7">
+                                <rect key="frame" x="123.5" y="60" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Xcz-RS-Kbo"/>
+                                    <constraint firstAttribute="width" secondItem="dGa-AR-3T7" secondAttribute="height" multiplier="1:1" id="kk0-yL-1jg"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3gD-z8-tYz" firstAttribute="centerY" secondItem="Pzg-yb-5sR" secondAttribute="centerY" id="1or-N8-mM5"/>
+                            <constraint firstItem="3gD-z8-tYz" firstAttribute="centerX" secondItem="Pzg-yb-5sR" secondAttribute="centerX" id="EPp-VX-XYO"/>
+                            <constraint firstItem="dGa-AR-3T7" firstAttribute="centerX" secondItem="Pzg-yb-5sR" secondAttribute="centerX" id="EV1-Ox-jyh"/>
+                            <constraint firstItem="dGa-AR-3T7" firstAttribute="top" secondItem="g0I-iQ-Tk5" secondAttribute="top" constant="40" id="mmS-Q3-bUT"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="g0I-iQ-Tk5"/>
                     </view>
                     <connections>
@@ -239,7 +275,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fnW-KL-4iJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="230" y="-55"/>
+            <point key="canvasLocation" x="229.59999999999999" y="-55.322338830584712"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="V7c-IC-Wad">
@@ -280,4 +316,7 @@
             <point key="canvasLocation" x="2020" y="304"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="256" height="256"/>
+    </resources>
 </document>

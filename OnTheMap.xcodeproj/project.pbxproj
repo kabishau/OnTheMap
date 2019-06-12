@@ -19,6 +19,7 @@
 		456660A922A2EA210051D01B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456660A822A2EA210051D01B /* LoginViewController.swift */; };
 		456660AB22A2ECE50051D01B /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456660AA22A2ECE50051D01B /* MemberModel.swift */; };
 		45C6D0F122A1D1E800708138 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C6D0F022A1D1E800708138 /* MapViewController.swift */; };
+		45D69D0822B1A3D40006D799 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45D69D0722B1A3D40006D799 /* MainTabBar.swift */; };
 		5B51AB0622A61E3200053C9C /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51AB0522A61E3200053C9C /* LoginRequest.swift */; };
 		5B51AB0822A6233D00053C9C /* UdacityAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51AB0722A6233D00053C9C /* UdacityAPI.swift */; };
 		5B51AB0A22A62E2C00053C9C /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B51AB0922A62E2C00053C9C /* LoginResponse.swift */; };
@@ -46,6 +47,7 @@
 		456660A822A2EA210051D01B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		456660AA22A2ECE50051D01B /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
 		45C6D0F022A1D1E800708138 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		45D69D0722B1A3D40006D799 /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainTabBar.swift; path = OnTheMap/Model/MainTabBar.swift; sourceTree = SOURCE_ROOT; };
 		5B51AB0522A61E3200053C9C /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		5B51AB0722A6233D00053C9C /* UdacityAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityAPI.swift; sourceTree = "<group>"; };
 		5B51AB0922A62E2C00053C9C /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 		5B51AB01229F740900053C9C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				45D69D0722B1A3D40006D799 /* MainTabBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				45C6D0F122A1D1E800708138 /* MapViewController.swift in Sources */,
 				5B908FCC229E238500F843DA /* AppDelegate.swift in Sources */,
 				456660AB22A2ECE50051D01B /* MemberModel.swift in Sources */,
+				45D69D0822B1A3D40006D799 /* MainTabBar.swift in Sources */,
 				5B51AB0622A61E3200053C9C /* LoginRequest.swift in Sources */,
 				5B51AB0822A6233D00053C9C /* UdacityAPI.swift in Sources */,
 				5B9543AC22AB4D2100AC40E3 /* PostLocationResponse.swift in Sources */,

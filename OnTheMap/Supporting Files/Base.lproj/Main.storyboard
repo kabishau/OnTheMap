@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jjO-8K-3ne">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J06-S0-I4O">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -178,11 +178,11 @@
             </objects>
             <point key="canvasLocation" x="2960.8000000000002" y="303.59820089955025"/>
         </scene>
-        <!--Item-->
+        <!--Map-->
         <scene sceneID="u4y-qx-Gqe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8Jv-5E-ILv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Nqi-H5-Mnu"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="geo_fence" id="Nqi-H5-Mnu"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1N6-iZ-o94">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -296,11 +296,11 @@
             </objects>
             <point key="canvasLocation" x="1055" y="-55"/>
         </scene>
-        <!--Item-->
+        <!--List-->
         <scene sceneID="sPj-0G-Bkx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WZa-kn-NsF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="PUJ-tb-iL4"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="List" image="list" id="PUJ-tb-iL4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jnd-SO-VZm">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -317,6 +317,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="geo_fence" width="30" height="30"/>
+        <image name="list" width="30" height="30"/>
         <image name="logo" width="256" height="256"/>
     </resources>
 </document>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J06-S0-I4O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jjO-8K-3ne">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -205,6 +205,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="dGa-AR-3T7">
+                                <rect key="frame" x="123.5" y="60" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Xcz-RS-Kbo"/>
+                                    <constraint firstAttribute="width" secondItem="dGa-AR-3T7" secondAttribute="height" multiplier="1:1" id="kk0-yL-1jg"/>
+                                </constraints>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="3gD-z8-tYz">
                                 <rect key="frame" x="67" y="222.5" width="241" height="222"/>
                                 <subviews>
@@ -250,25 +257,25 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="dGa-AR-3T7">
-                                <rect key="frame" x="123.5" y="60" width="128" height="128"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="Xcz-RS-Kbo"/>
-                                    <constraint firstAttribute="width" secondItem="dGa-AR-3T7" secondAttribute="height" multiplier="1:1" id="kk0-yL-1jg"/>
-                                </constraints>
-                            </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xPt-5L-RZx">
+                                <rect key="frame" x="177.5" y="464.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="3gD-z8-tYz" firstAttribute="centerY" secondItem="Pzg-yb-5sR" secondAttribute="centerY" id="1or-N8-mM5"/>
                             <constraint firstItem="3gD-z8-tYz" firstAttribute="centerX" secondItem="Pzg-yb-5sR" secondAttribute="centerX" id="EPp-VX-XYO"/>
                             <constraint firstItem="dGa-AR-3T7" firstAttribute="centerX" secondItem="Pzg-yb-5sR" secondAttribute="centerX" id="EV1-Ox-jyh"/>
+                            <constraint firstItem="xPt-5L-RZx" firstAttribute="top" secondItem="3gD-z8-tYz" secondAttribute="bottom" constant="20" id="M5q-C2-xGd"/>
                             <constraint firstItem="dGa-AR-3T7" firstAttribute="top" secondItem="g0I-iQ-Tk5" secondAttribute="top" constant="40" id="mmS-Q3-bUT"/>
+                            <constraint firstItem="xPt-5L-RZx" firstAttribute="centerX" secondItem="Pzg-yb-5sR" secondAttribute="centerX" id="wln-Mv-vtJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="g0I-iQ-Tk5"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="xPt-5L-RZx" id="WUE-dR-Ipf"/>
                         <outlet property="emailTextField" destination="jRO-wN-58k" id="gqN-Z9-GuY"/>
+                        <outlet property="loginButton" destination="Nuc-C4-W9U" id="a5s-ni-NW7"/>
                         <outlet property="passwordTextField" destination="JsI-1e-mvT" id="qbv-hd-nc5"/>
                         <segue destination="J06-S0-I4O" kind="show" identifier="completeLogin" id="v3H-Wf-fAT"/>
                     </connections>

@@ -53,7 +53,8 @@ class UdacityAPI {
             }
 
             do {
-                let responseObject = try JSONDecoder().decode(LoginResponse.self, from: data)
+                let decoder = JSONDecoder()
+                let responseObject = try decoder.decode(LoginResponse.self, from: data)
                 
                 if responseObject.account.registered {
                     MemberModel.user.uniqueKey = responseObject.account.key
@@ -61,12 +62,18 @@ class UdacityAPI {
                     Auth.expiration = responseObject.session.expiration
                     completion(true, nil)
                 } else {
-                    completion(false, nil)
-                    // send error message to user - put it in login vc
+                    
+                    do {
+                        print("entered error do-catch")
+                        let responseObject = try decoder.decode(ErrorLoginResponse.self, from: data)
+                        print(responseObject.status)
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                    completion(false, error)
                 }
                 
             } catch {
-                print(error.localizedDescription)
                 completion(false, error)
             }
             

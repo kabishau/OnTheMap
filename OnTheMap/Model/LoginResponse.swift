@@ -18,3 +18,8 @@ struct LoginResponse: Codable {
 struct LogoutResponse: Codable {
     let session: Session
 }
+
+struct ErrorLoginResponse: Codable {
+    let status: Int
+    let error: String
+}

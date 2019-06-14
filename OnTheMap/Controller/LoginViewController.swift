@@ -2,8 +2,6 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    
-
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -19,16 +17,15 @@ class LoginViewController: UIViewController {
         
         UdacityAPI.login(username: username, password: password) { (success, error) in
             
-            //self.setLoggingIn(false) // is this the right place
+            self.setLoggingIn(false)
             if success {
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "completeLogin", sender: nil)
-                }
+                self.performSegue(withIdentifier: "completeLogin", sender: nil)
             } else {
-                print(error?.localizedDescription)
+                self.showLoginFailure(message: error?.localizedDescription ?? "Unknown Error")
             }
         }
     }
+    
     @IBAction func signUpTapped(_ sender: UIButton) {
         UIApplication.shared.open(URL(string: "https://auth.udacity.com/sign-up")!, options: [:], completionHandler: nil)    }
     
@@ -52,5 +49,12 @@ class LoginViewController: UIViewController {
         emailTextField.isEnabled = !loggingIn
         passwordTextField.isEnabled = !loggingIn
         loginButton.isEnabled = !loggingIn
+    }
+    
+    func showLoginFailure(message: String) {
+        let alertController = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        //show(alertController, sender: nil)
+        present(alertController, animated: true, completion: nil)
     }
 }

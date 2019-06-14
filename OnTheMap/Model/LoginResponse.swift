@@ -23,3 +23,9 @@ struct ErrorLoginResponse: Codable {
     let status: Int
     let error: String
 }
+
+extension ErrorLoginResponse: LocalizedError {
+    var errorDescription: String? {
+        return error
+    }
+}

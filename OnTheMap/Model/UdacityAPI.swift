@@ -48,35 +48,37 @@ class UdacityAPI {
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             guard let data = data?.subdata(in: 5..<data!.count) else {
-                completion(false, error)
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
                 return
             }
-
+            
+            let decoder = JSONDecoder()
             do {
-                let decoder = JSONDecoder()
                 let responseObject = try decoder.decode(LoginResponse.self, from: data)
                 
                 if responseObject.account.registered {
                     MemberModel.user.uniqueKey = responseObject.account.key
                     Auth.sessionId = responseObject.session.id
                     Auth.expiration = responseObject.session.expiration
-                    completion(true, nil)
-                } else {
                     
-                    do {
-                        print("entered error do-catch")
-                        let responseObject = try decoder.decode(ErrorLoginResponse.self, from: data)
-                        print(responseObject.status)
-                    } catch {
-                        print(error.localizedDescription)
+                    DispatchQueue.main.async {
+                        completion(true, nil)
                     }
-                    completion(false, error)
                 }
-                
             } catch {
-                completion(false, error)
+                do {
+                    let errorResponse = try decoder.decode(ErrorLoginResponse.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(false, errorResponse)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(false, error)
+                    }
+                }
             }
-            
         }
         task.resume()
     }

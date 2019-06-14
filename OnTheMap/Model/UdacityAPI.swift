@@ -1,4 +1,5 @@
 import Foundation
+import CoreLocation
 
 class UdacityAPI {
     
@@ -154,7 +155,7 @@ class UdacityAPI {
         task.resume()
     }
     
-    class func postLocation(completion: @escaping (Bool, Error?) -> Void) {
+    class func postLocation(location: CLLocation, completion: @escaping (Bool, Error?) -> Void) {
         
         var request = URLRequest(url: UdacityAPI.Endpoints.postLocation.url)
         request.httpMethod = "POST"

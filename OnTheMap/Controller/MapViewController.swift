@@ -41,6 +41,7 @@ class MapViewController: UIViewController {
     
     @objc override func reloadLocations() {
         UdacityAPI.getStudentLocations(completion: handleGetLocationRequest(students:error:))
+        reloadAnnotations()
     }
     
     

@@ -48,30 +48,41 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="acL-LE-PGN">
-                                <rect key="frame" x="59" y="196" width="241" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="LinkedIn URL Profile" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ePl-eq-2MN">
-                                <rect key="frame" x="59" y="272" width="241" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KhL-f0-KvX">
-                                <rect key="frame" x="133" y="378" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Find Location"/>
-                                <connections>
-                                    <action selector="findLocationTapped:" destination="Q0H-c7-ViL" eventType="touchUpInside" id="T60-Xh-kQe"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="61" translatesAutoresizingMaskIntoConstraints="NO" id="ltA-Tr-1Su">
+                                <rect key="frame" x="55" y="227.5" width="265" height="212"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="acL-LE-PGN">
+                                        <rect key="frame" x="0.0" y="0.0" width="265" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="LinkedIn URL Profile" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ePl-eq-2MN">
+                                        <rect key="frame" x="0.0" y="91" width="265" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KhL-f0-KvX">
+                                        <rect key="frame" x="0.0" y="182" width="265" height="30"/>
+                                        <color key="backgroundColor" red="0.14901960780000001" green="0.36862745099999999" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="FIND LOCATION">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="findLocationTapped:" destination="Q0H-c7-ViL" eventType="touchUpInside" id="T60-Xh-kQe"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Bxh-ot-t7P" firstAttribute="trailing" secondItem="ltA-Tr-1Su" secondAttribute="trailing" constant="55" id="5an-7A-G1M"/>
+                            <constraint firstItem="ltA-Tr-1Su" firstAttribute="leading" secondItem="Bxh-ot-t7P" secondAttribute="leading" constant="55" id="GSP-Ur-bt3"/>
+                            <constraint firstItem="ltA-Tr-1Su" firstAttribute="centerY" secondItem="pMu-ce-Vyh" secondAttribute="centerY" id="Mt1-Lb-lpU"/>
+                            <constraint firstItem="ltA-Tr-1Su" firstAttribute="centerX" secondItem="pMu-ce-Vyh" secondAttribute="centerX" id="rQw-Ci-NTH"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Bxh-ot-t7P"/>
                     </view>
                     <connections>
@@ -95,10 +106,12 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adU-W7-9J2">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KGB-qo-EK6">
-                                <rect key="frame" x="163" y="552" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="FINISH"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KGB-qo-EK6">
+                                <rect key="frame" x="55" y="552" width="265" height="30"/>
+                                <color key="backgroundColor" red="0.14901960780000001" green="0.36862745099999999" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="SUBMIT LOCATION">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="finishTapped:" destination="Qiv-j7-Le2" eventType="touchUpInside" id="LYV-0F-lPF"/>
                                 </connections>
@@ -106,8 +119,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="mxP-me-57P" firstAttribute="bottom" secondItem="KGB-qo-EK6" secondAttribute="bottom" constant="85" id="5aW-m1-MY0"/>
                             <constraint firstItem="adU-W7-9J2" firstAttribute="trailing" secondItem="mxP-me-57P" secondAttribute="trailing" id="6k4-kK-KwV"/>
+                            <constraint firstItem="mxP-me-57P" firstAttribute="trailing" secondItem="KGB-qo-EK6" secondAttribute="trailing" constant="55" id="NRl-FY-BBE"/>
+                            <constraint firstItem="KGB-qo-EK6" firstAttribute="centerX" secondItem="wn5-Ts-NnB" secondAttribute="centerX" id="SqD-Tf-mFg"/>
                             <constraint firstItem="adU-W7-9J2" firstAttribute="bottom" secondItem="mxP-me-57P" secondAttribute="bottom" id="eZP-9Q-CZD"/>
+                            <constraint firstItem="KGB-qo-EK6" firstAttribute="leading" secondItem="mxP-me-57P" secondAttribute="leading" constant="55" id="tSc-Ci-Tys"/>
                             <constraint firstItem="adU-W7-9J2" firstAttribute="leading" secondItem="mxP-me-57P" secondAttribute="leading" id="wlk-jk-DcU"/>
                             <constraint firstItem="adU-W7-9J2" firstAttribute="top" secondItem="wn5-Ts-NnB" secondAttribute="top" id="z3A-ev-Xyr"/>
                         </constraints>

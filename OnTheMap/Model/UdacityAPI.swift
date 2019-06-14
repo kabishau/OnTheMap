@@ -99,18 +99,23 @@ class UdacityAPI {
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data?.subdata(in: 5..<data!.count) else {
-                completion(false, error)
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
                 return
             }
 
             do {
-                let reponseObject = try JSONDecoder().decode(LogoutResponse.self, from: data)
-                //TODO: - Do I need to do something here?
+                _ = try JSONDecoder().decode(LogoutResponse.self, from: data)
                 Auth.sessionId = ""
                 Auth.expiration = ""
-                completion(true, nil)
+                DispatchQueue.main.async {
+                    completion(true, nil)
+                }
             } catch {
-                completion(false, error)
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
             }
         }
         task.resume()
@@ -119,16 +124,31 @@ class UdacityAPI {
     class func getStudentLocations(completion: @escaping ([Student], Error?) -> Void) {
         
         let task = URLSession.shared.dataTask(with: Endpoints.getLocations.url) { data, response, error in
+
             guard let data = data else {
-                completion([], error)
+                DispatchQueue.main.async {
+                    completion([], error)
+                }
                 return
             }
+            
             let decoder = JSONDecoder()
             do {
                 let responseObject = try decoder.decode(Students.self, from: data)
-                completion(responseObject.results, nil)
+                DispatchQueue.main.async {
+                    completion(responseObject.results, nil)
+                }
             } catch {
-                completion([], error)
+                if let stringError = String(data: data, encoding: .utf8) {
+                    let errorResponse = ErrorGetLocationsResponse(error: stringError)
+                    DispatchQueue.main.async {
+                        completion([], errorResponse)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        completion([], error)
+                    }
+                }
             }
         }
         task.resume()
@@ -140,24 +160,28 @@ class UdacityAPI {
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 
-        // replace with convenience init
         let body = PostLocationRequest()
 
         request.httpBody = try! JSONEncoder().encode(body)
 
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
-                completion(false, error)
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
                 return
             }
             do {
                 let responseObject = try JSONDecoder().decode(PostLocationResponse.self, from: data)
                 MemberModel.user.createdAt = responseObject.createdAt
                 MemberModel.user.objectId = responseObject.objectId
-                completion(true, nil)
+                DispatchQueue.main.async {
+                    completion(true, nil)
+                }
             } catch {
-                print(error.localizedDescription)
-                completion(false, error)
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
             }
         }
         task.resume()
@@ -173,16 +197,21 @@ class UdacityAPI {
 
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data else {
-                completion(false, error)
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
                 return
             }
             do {
                 let responseObject = try JSONDecoder().decode(UpdateLocationResponse.self, from: data)
                 MemberModel.user.updatedAt = responseObject.updatedAt
-                completion(true, nil)
+                DispatchQueue.main.async {
+                    completion(true, nil)
+                }
             } catch {
-                print(error.localizedDescription)
-                completion(false, error)
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
             }
         }
         task.resume()

@@ -41,12 +41,10 @@ extension Student: MKAnnotation {
     }
     
     var title: String? {
-        return firstName
+        return firstName + " " + lastName
     }
     
-    /*
     var subtitle: String? {
         return mediaURL
     }
-    */
 }

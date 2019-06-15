@@ -3,7 +3,7 @@ import MapKit
 import CoreLocation
 
 class MapViewController: UIViewController {
-
+    
     @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
@@ -12,7 +12,7 @@ class MapViewController: UIViewController {
         setupNavigationItem()
         
         UdacityAPI.getStudentLocations(completion: handleGetLocationRequest(students:error:))
-
+        
         mapView.delegate = self
     }
     
@@ -60,10 +60,11 @@ class MapViewController: UIViewController {
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
-
+    
 }
 
 extension MapViewController: MKMapViewDelegate {
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         if annotation is MKUserLocation {
@@ -77,33 +78,30 @@ extension MapViewController: MKMapViewDelegate {
             annotationView?.annotation = annotation
         }
         
-        // customize annotation here
         annotationView?.canShowCallout = true
-        //TODO: - Custom icon of Ldn
-        //annotationView?.detailCalloutAccessoryView = UIButton(type: .detailDisclosure)
-        annotationView?.leftCalloutAccessoryView = UIButton(type: .roundedRect)
+        
+        let linkedInButton = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 30, height: 30)))
+        linkedInButton.setBackgroundImage(UIImage(named: "linkedIn"), for: .normal)
+        annotationView?.rightCalloutAccessoryView = linkedInButton
         
         annotationView?.animatesWhenAdded = true
-        //annotationView?.isSelected = true
         
         return annotationView
     }
-    /*
+    
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
-            let app = UIApplication.shared
             if let toOpen = view.annotation?.subtitle! {
-                app.open(URL(string: toOpen)!, options: [:], completionHandler: nil)
+                //app.open(URL(string: toOpen)!, options: [:], completionHandler: nil)
+                UIApplication.shared.open(URL(string: toOpen)!, options: [:]) { (success) in
+                    if !success {
+                        let alertController = UIAlertController(title: "User Profile cannot be open.", message: "User didn't provide valid Profile URL.", preferredStyle: .alert)
+                        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                        alertController.addAction(action)
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                }
             }
         }
     }
-    */
-    
-    /*
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        let ac = UIAlertController(title: view.annotation?.title ?? "Unknown", message: view.annotation?.subtitle ?? "Uknown", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
-        present(ac, animated: true)
-    }
-    */
 }

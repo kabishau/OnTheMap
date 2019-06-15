@@ -13,6 +13,11 @@ class UserViewController: UIViewController {
         tableView.dataSource = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     @objc override func reloadLocations() {
         UdacityAPI.getStudentLocations { (students, error) in
             MemberModel.students = students

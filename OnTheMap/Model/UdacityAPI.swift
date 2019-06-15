@@ -161,7 +161,7 @@ class UdacityAPI {
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 
-        let body = PostLocationRequest()
+        let body = PostLocationRequest(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
 
         request.httpBody = try! JSONEncoder().encode(body)
 
@@ -188,12 +188,12 @@ class UdacityAPI {
         task.resume()
     }
     
-    class func updateLocation(completion: @escaping (Bool, Error?) -> Void) {
+    class func updateLocation(location: CLLocation, completion: @escaping (Bool, Error?) -> Void) {
 
         var request = URLRequest(url: Endpoints.updateLocation.url)
         request.httpMethod = "PUT"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        let body = PostLocationRequest()
+        let body = PostLocationRequest(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         request.httpBody = try! JSONEncoder().encode(body)
 
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in

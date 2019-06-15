@@ -9,7 +9,6 @@ class ProfileViewController: UIViewController {
     var location: CLLocation?
     
     lazy var geocoder = CLGeocoder()
-//    var user: Student = Student(createdAt: "", firstName: "Aleksey", lastName: "Kabishau", latitude: 0.0, longitude: 0.0, mapString: "", mediaURL: "", objectId: "", uniqueKey: "", updatedAt: "")
     
     @IBAction func findLocationTapped(_ sender: UIButton) {
         geocodeLocation()

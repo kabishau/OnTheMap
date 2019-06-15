@@ -14,77 +14,31 @@ class LocationViewController: UIViewController {
             print("there are no coordinates")
             return
         }
-        //MemberModel.user.latitude = location.coordinate.latitude
-        //MemberModel.user.longitude = location.coordinate.longitude
         
-        if let index = MemberModel.students.firstIndex(where: { $0.uniqueKey == MemberModel.user.uniqueKey}) {
-            if MemberModel.students[index].objectId == "" {
-                // create location
-            } else {
-                // update location
-            }
-        } else {
-            // add user with created location to array
-        }
-        
-        
-        
-        let objectId = MemberModel.user.objectId
-        // get student first and then object id
-        
-        if objectId == "" {
-            UdacityAPI.postLocation(location: location) { (created, error) in
-                
-                    if created {
-                        print("Created")
-                    } else {
-                        print(error?.localizedDescription)
-                    }
-                
-            }
-        } else {
-            UdacityAPI.updateLocation { (updated, error) in
-                // check for errors - what is in response?
-                    if updated {
-                        print("updated")
-                        if let index = MemberModel.students.firstIndex(where: { $0.objectId == objectId }) {
-                            MemberModel.students[index].latitude = location.coordinate.latitude
-                            MemberModel.students[index].longitude = location.coordinate.longitude
-                            
-                            self.dismiss(animated: true, completion: nil)
-                        } else {
-                            print("Error trying update location")
-                        }
-                    }
-            }
-        }
-        
-        /*
-        if MemberModel.user.objectId != "" {
-            UdacityAPI.updateLocation { (updated, error) in
+        if let index = MemberModel.students.firstIndex(where: { $0.uniqueKey == MemberModel.user.uniqueKey}), MemberModel.students[index].objectId != "" {
+            // update location
+            UdacityAPI.updateLocation(location: location) { (updated, error) in
                 if updated {
                     print("updated")
-                    
-                    //TODO: - Use firstIndex(where) to update location on array and update annotations
-                    // if there is no location - add user's location to array
-                    // if it exist - update it in array and in user
+                    MemberModel.students[index].latitude = location.coordinate.latitude
+                    MemberModel.students[index].longitude = location.coordinate.longitude
+                    print(MemberModel.students.count)
                     self.dismiss(animated: true, completion: nil)
-                } else {
-                    //TODO: enable to update location
                 }
             }
         } else {
-            UdacityAPI.postLocation { (created, error) in
+            // create location
+            UdacityAPI.postLocation(location: location) { (created, error) in
                 if created {
                     print("created")
-                    //TODO: -  main queue? download data again or just add one annotation
+                    MemberModel.user.latitude = location.coordinate.latitude
+                    MemberModel.user.longitude = location.coordinate.longitude
+                    MemberModel.students.insert(MemberModel.user, at: 0)
+                    print(MemberModel.students.count)
                     self.dismiss(animated: true, completion: nil)
-                } else {
-                    //TODO: enable to post location
                 }
             }
         }
-        */
     }
     
     override func viewDidLoad() {

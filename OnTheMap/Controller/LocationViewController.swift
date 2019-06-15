@@ -9,7 +9,7 @@ class LocationViewController: UIViewController {
     
     
     @IBAction func finishTapped(_ sender: UIButton) {
-        //TODO: - use real location and url
+        
         let location = CLLocation(latitude: user.latitude, longitude: user.longitude)
         
         if let index = MemberModel.students.firstIndex(where: { $0.uniqueKey == UdacityAPI.Auth.uniqueKey}), MemberModel.students[index].objectId != "" {

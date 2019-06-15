@@ -21,7 +21,7 @@ class MapViewController: UIViewController {
         
         reloadAnnotations()
         
-        let regionRadius: CLLocationDistance = 1000000.0
+        let regionRadius: CLLocationDistance = 5000000.0
         if let index = MemberModel.students.firstIndex(where: { $0.uniqueKey == MemberModel.user.uniqueKey}) {
             let user = MemberModel.students[index]
             let userLocation = CLLocation(latitude: user.coordinate.latitude, longitude: user.coordinate.longitude)

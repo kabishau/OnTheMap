@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jjO-8K-3ne">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J06-S0-I4O">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -48,23 +48,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="61" translatesAutoresizingMaskIntoConstraints="NO" id="ltA-Tr-1Su">
-                                <rect key="frame" x="55" y="227.5" width="265" height="212"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="YTp-20-0Ku">
+                                <rect key="frame" x="50" y="225.5" width="275" height="216"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="acL-LE-PGN">
-                                        <rect key="frame" x="0.0" y="0.0" width="265" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="LinkedIn URL Profile" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ePl-eq-2MN">
-                                        <rect key="frame" x="0.0" y="91" width="265" height="30"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4WG-N5-FtN">
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="53"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c9X-3D-r5n">
+                                                <rect key="frame" x="0.0" y="0.0" width="275" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="acL-LE-PGN">
+                                                <rect key="frame" x="0.0" y="23" width="275" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Q34-oo-DC8">
+                                        <rect key="frame" x="0.0" y="93" width="275" height="53"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6K9-HS-euj">
+                                                <rect key="frame" x="0.0" y="0.0" width="275" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="LinkedIn URL Profile" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ePl-eq-2MN">
+                                                <rect key="frame" x="0.0" y="23" width="275" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KhL-f0-KvX">
-                                        <rect key="frame" x="0.0" y="182" width="265" height="30"/>
+                                        <rect key="frame" x="0.0" y="186" width="275" height="30"/>
                                         <color key="backgroundColor" red="0.14901960780000001" green="0.36862745099999999" blue="0.58823529409999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="FIND LOCATION">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -75,18 +97,28 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pxj-zM-sNJ">
+                                <rect key="frame" x="123.5" y="80" width="128" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Bxh-ot-t7P" firstAttribute="trailing" secondItem="ltA-Tr-1Su" secondAttribute="trailing" constant="55" id="5an-7A-G1M"/>
-                            <constraint firstItem="ltA-Tr-1Su" firstAttribute="leading" secondItem="Bxh-ot-t7P" secondAttribute="leading" constant="55" id="GSP-Ur-bt3"/>
-                            <constraint firstItem="ltA-Tr-1Su" firstAttribute="centerY" secondItem="pMu-ce-Vyh" secondAttribute="centerY" id="Mt1-Lb-lpU"/>
-                            <constraint firstItem="ltA-Tr-1Su" firstAttribute="centerX" secondItem="pMu-ce-Vyh" secondAttribute="centerX" id="rQw-Ci-NTH"/>
+                            <constraint firstItem="Pxj-zM-sNJ" firstAttribute="centerX" secondItem="pMu-ce-Vyh" secondAttribute="centerX" id="38Z-Ex-NoG"/>
+                            <constraint firstItem="YTp-20-0Ku" firstAttribute="leading" secondItem="Bxh-ot-t7P" secondAttribute="leading" constant="50" id="4fA-I2-exX"/>
+                            <constraint firstItem="Pxj-zM-sNJ" firstAttribute="top" secondItem="Bxh-ot-t7P" secondAttribute="top" constant="60" id="LCw-x1-ffx"/>
+                            <constraint firstItem="Bxh-ot-t7P" firstAttribute="trailing" secondItem="YTp-20-0Ku" secondAttribute="trailing" constant="50" id="WSZ-rA-xvI"/>
+                            <constraint firstItem="YTp-20-0Ku" firstAttribute="centerY" secondItem="pMu-ce-Vyh" secondAttribute="centerY" id="yoh-DG-sFg"/>
+                            <constraint firstItem="YTp-20-0Ku" firstAttribute="centerX" secondItem="pMu-ce-Vyh" secondAttribute="centerX" id="zf7-VS-e92"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bxh-ot-t7P"/>
                     </view>
                     <connections>
+                        <outlet property="locationLabel" destination="c9X-3D-r5n" id="bTt-sD-A34"/>
                         <outlet property="locationTextField" destination="acL-LE-PGN" id="zcw-jr-cM6"/>
+                        <outlet property="profileLabel" destination="6K9-HS-euj" id="3Qr-jT-qKT"/>
                         <outlet property="profileUrl" destination="ePl-eq-2MN" id="8Ei-6E-yun"/>
                         <segue destination="Qiv-j7-Le2" kind="show" identifier="LocationViewController" id="WjC-O9-v3R"/>
                     </connections>

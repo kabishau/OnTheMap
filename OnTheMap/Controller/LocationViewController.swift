@@ -6,6 +6,7 @@ class LocationViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     var location: CLLocation?
+    var profileLink: String = ""
     
     
     @IBAction func finishTapped(_ sender: UIButton) {
@@ -16,10 +17,9 @@ class LocationViewController: UIViewController {
         }
         
         if let index = MemberModel.students.firstIndex(where: { $0.uniqueKey == MemberModel.user.uniqueKey}), MemberModel.students[index].objectId != "" {
-            // update location
+            
             UdacityAPI.updateLocation(location: location) { (updated, error) in
                 if updated {
-                    print("updated")
                     MemberModel.students[index].latitude = location.coordinate.latitude
                     MemberModel.students[index].longitude = location.coordinate.longitude
                     print(MemberModel.students.count)
@@ -27,14 +27,13 @@ class LocationViewController: UIViewController {
                 }
             }
         } else {
-            // create location
+            
             UdacityAPI.postLocation(location: location) { (created, error) in
                 if created {
-                    print("created")
                     MemberModel.user.latitude = location.coordinate.latitude
                     MemberModel.user.longitude = location.coordinate.longitude
+                    MemberModel.user.mediaURL = self.profileLink
                     MemberModel.students.insert(MemberModel.user, at: 0)
-                    print(MemberModel.students.count)
                     self.dismiss(animated: true, completion: nil)
                 }
             }

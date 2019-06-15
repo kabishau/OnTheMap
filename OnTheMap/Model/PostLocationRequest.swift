@@ -1,4 +1,5 @@
 import Foundation
+import CoreLocation
 
 struct PostLocationRequest: Codable {
     let uniqueKey: String
@@ -9,14 +10,14 @@ struct PostLocationRequest: Codable {
     let latitude: Double
     let longitude: Double
     
-    init(latitude: Double, longitude: Double) {
+    init(mapString: String, location: CLLocation, profileLink: String) {
         self.uniqueKey = MemberModel.user.uniqueKey
-        self.firstName = MemberModel.user.firstName
-        self.lastName = MemberModel.user.lastName
-        self.mediaURL = MemberModel.user.mediaURL
-        self.mapString = MemberModel.user.mapString
-        self.latitude = latitude
-        self.longitude = longitude
+        self.firstName = "Aleksey"
+        self.lastName = "Kabishau"
+        self.mediaURL = profileLink
+        self.mapString = mapString
+        self.latitude = location.coordinate.latitude
+        self.longitude = location.coordinate.longitude
         
     }
 }

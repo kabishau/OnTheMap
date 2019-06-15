@@ -11,7 +11,7 @@ class MapViewController: UIViewController {
         
         setupNavigationItem()
         
-        UdacityAPI.getStudentLocations(completion: handleGetLocationRequest(students:error:))
+        //UdacityAPI.getStudentLocations(completion: handleGetLocationRequest(students:error:))
         
         mapView.delegate = self
     }
@@ -19,10 +19,10 @@ class MapViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        reloadAnnotations()
+        UdacityAPI.getStudentLocations(completion: handleGetLocationRequest(students:error:))
         
         let regionRadius: CLLocationDistance = 5000000.0
-        if let index = MemberModel.students.firstIndex(where: { $0.uniqueKey == MemberModel.user.uniqueKey}) {
+        if let index = MemberModel.students.firstIndex(where: { $0.uniqueKey == UdacityAPI.Auth.uniqueKey}) {
             let user = MemberModel.students[index]
             let userLocation = CLLocation(latitude: user.coordinate.latitude, longitude: user.coordinate.longitude)
             let region = MKCoordinateRegion(center: userLocation.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
@@ -32,8 +32,9 @@ class MapViewController: UIViewController {
     
     func handleGetLocationRequest(students: [Student], error: Error?) {
         if students != [] {
+            self.mapView.removeAnnotations(MemberModel.students)
             MemberModel.students = students
-            self.reloadAnnotations()
+            self.mapView.addAnnotations(MemberModel.students)
         } else {
             if let error = error {
                 self.showDataFailure(message: error.localizedDescription)
@@ -45,14 +46,16 @@ class MapViewController: UIViewController {
     
     @objc override func reloadLocations() {
         UdacityAPI.getStudentLocations(completion: handleGetLocationRequest(students:error:))
-        reloadAnnotations()
     }
     
     
     
     func reloadAnnotations() {
-        self.mapView.removeAnnotations(MemberModel.students)
-        self.mapView.addAnnotations(MemberModel.students)
+        DispatchQueue.main.async {
+            self.mapView.removeAnnotations(MemberModel.students)
+            self.mapView.addAnnotations(MemberModel.students)
+        }
+        
     }
     
     func showDataFailure(message: String) {
@@ -92,14 +95,20 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             if let toOpen = view.annotation?.subtitle! {
-                //app.open(URL(string: toOpen)!, options: [:], completionHandler: nil)
-                UIApplication.shared.open(URL(string: toOpen)!, options: [:]) { (success) in
-                    if !success {
-                        let alertController = UIAlertController(title: "User Profile cannot be open.", message: "User didn't provide valid Profile URL.", preferredStyle: .alert)
-                        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-                        alertController.addAction(action)
-                        self.present(alertController, animated: true, completion: nil)
+                if let url = URL(string: toOpen) {
+                    UIApplication.shared.open(url, options: [:]) { (success) in
+                        if !success {
+                            let alertController = UIAlertController(title: "User Profile cannot be open.", message: "User didn't provide valid Profile URL.", preferredStyle: .alert)
+                            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                            alertController.addAction(action)
+                            self.present(alertController, animated: true, completion: nil)
+                        }
                     }
+                } else {
+                    let alertController = UIAlertController(title: "User Profile cannot be open.", message: "User didn't provide valid Profile URL.", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alertController.addAction(action)
+                    self.present(alertController, animated: true, completion: nil)
                 }
             }
         }

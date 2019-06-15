@@ -5,7 +5,8 @@ class UdacityAPI {
     
     struct Auth {
         
-        //static var uniqueKey = ""
+        static var uniqueKey = ""
+        static var objectId = ""
         static var sessionId = ""
         static var expiration = ""
     }
@@ -28,7 +29,7 @@ class UdacityAPI {
             case .postLocation:
                 return Endpoints.base + "StudentLocation"
             case .updateLocation:
-                return Endpoints.base + "StudentLocation/" + MemberModel.user.objectId
+                return Endpoints.base + "StudentLocation/" + Auth.objectId
             }
         }
         
@@ -60,7 +61,7 @@ class UdacityAPI {
                 let responseObject = try decoder.decode(LoginResponse.self, from: data)
                 
                 if responseObject.account.registered {
-                    MemberModel.user.uniqueKey = responseObject.account.key
+                    Auth.uniqueKey = responseObject.account.key
                     Auth.sessionId = responseObject.session.id
                     Auth.expiration = responseObject.session.expiration
                     
@@ -155,13 +156,13 @@ class UdacityAPI {
         task.resume()
     }
     
-    class func postLocation(location: CLLocation, completion: @escaping (Bool, Error?) -> Void) {
+    class func postLocation(mapString: String, location: CLLocation, profileLink: String, completion: @escaping (Bool, Error?) -> Void) {
         
         var request = URLRequest(url: UdacityAPI.Endpoints.postLocation.url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 
-        let body = PostLocationRequest(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let body = PostLocationRequest(mapString: mapString, location: location, profileLink: profileLink)
 
         request.httpBody = try! JSONEncoder().encode(body)
 
@@ -174,8 +175,8 @@ class UdacityAPI {
             }
             do {
                 let responseObject = try JSONDecoder().decode(PostLocationResponse.self, from: data)
-                MemberModel.user.createdAt = responseObject.createdAt
-                MemberModel.user.objectId = responseObject.objectId
+                
+                Auth.objectId = responseObject.objectId
                 DispatchQueue.main.async {
                     completion(true, nil)
                 }
@@ -188,12 +189,13 @@ class UdacityAPI {
         task.resume()
     }
     
-    class func updateLocation(location: CLLocation, completion: @escaping (Bool, Error?) -> Void) {
+    class func updateLocation(mapString: String, location: CLLocation, profileLink: String, completion: @escaping (Bool, Error?) -> Void) {
 
         var request = URLRequest(url: Endpoints.updateLocation.url)
         request.httpMethod = "PUT"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        let body = PostLocationRequest(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let body = PostLocationRequest(mapString: mapString, location: location, profileLink: profileLink)
+
         request.httpBody = try! JSONEncoder().encode(body)
 
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -205,7 +207,7 @@ class UdacityAPI {
             }
             do {
                 let responseObject = try JSONDecoder().decode(UpdateLocationResponse.self, from: data)
-                MemberModel.user.updatedAt = responseObject.updatedAt
+                // error of updating location
                 DispatchQueue.main.async {
                     completion(true, nil)
                 }

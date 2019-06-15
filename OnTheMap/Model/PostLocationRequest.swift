@@ -11,7 +11,7 @@ struct PostLocationRequest: Codable {
     let longitude: Double
     
     init(mapString: String, location: CLLocation, profileLink: String) {
-        self.uniqueKey = MemberModel.user.uniqueKey
+        self.uniqueKey = UdacityAPI.Auth.uniqueKey
         self.firstName = "Aleksey"
         self.lastName = "Kabishau"
         self.mediaURL = profileLink

@@ -15,16 +15,32 @@ class UserViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.reloadData()
+        
+        UdacityAPI.getStudentLocations(completion: handleGelLocationRequest(students:error:))
     }
     
     @objc override func reloadLocations() {
-        UdacityAPI.getStudentLocations { (students, error) in
+        UdacityAPI.getStudentLocations(completion: handleGelLocationRequest(students:error:))
+    }
+    
+    func handleGelLocationRequest(students: [Student], error: Error?) {
+        if students != [] {
             MemberModel.students = students
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+            self.tableView.reloadData()
+        } else {
+            if let error = error {
+                self.showDataFailure(message: error.localizedDescription)
+            } else {
+                self.showDataFailure(message: "Unknown error. Check your connection and reload data.")
             }
         }
+        
+    }
+    
+    func showDataFailure(message: String) {
+        let alertController = UIAlertController(title: "Loading Data Failed", message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
 }
 

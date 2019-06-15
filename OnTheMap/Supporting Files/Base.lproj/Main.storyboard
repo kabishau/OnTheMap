@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J06-S0-I4O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jjO-8K-3ne">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -119,7 +119,7 @@
                         <outlet property="locationLabel" destination="c9X-3D-r5n" id="bTt-sD-A34"/>
                         <outlet property="locationTextField" destination="acL-LE-PGN" id="zcw-jr-cM6"/>
                         <outlet property="profileLabel" destination="6K9-HS-euj" id="3Qr-jT-qKT"/>
-                        <outlet property="profileUrl" destination="ePl-eq-2MN" id="8Ei-6E-yun"/>
+                        <outlet property="profileLinkTextField" destination="ePl-eq-2MN" id="8Ei-6E-yun"/>
                         <segue destination="Qiv-j7-Le2" kind="show" identifier="LocationViewController" id="WjC-O9-v3R"/>
                     </connections>
                 </viewController>
@@ -182,7 +182,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="1ex-cW-Fue" detailTextLabel="q0E-we-xID" style="IBUITableViewCellStyleSubtitle" id="4cj-vF-4Rc">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="1ex-cW-Fue" detailTextLabel="q0E-we-xID" style="IBUITableViewCellStyleSubtitle" id="4cj-vF-4Rc">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4cj-vF-4Rc" id="7q9-sm-bA0">

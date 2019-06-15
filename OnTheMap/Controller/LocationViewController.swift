@@ -5,35 +5,24 @@ class LocationViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    var location: CLLocation?
-    var profileLink: String = ""
+    var user: Student! = nil
     
     
     @IBAction func finishTapped(_ sender: UIButton) {
         //TODO: - use real location and url
-        guard let location = location else {
-            print("there are no coordinates")
-            return
-        }
+        let location = CLLocation(latitude: user.latitude, longitude: user.longitude)
         
-        if let index = MemberModel.students.firstIndex(where: { $0.uniqueKey == MemberModel.user.uniqueKey}), MemberModel.students[index].objectId != "" {
+        if let index = MemberModel.students.firstIndex(where: { $0.uniqueKey == UdacityAPI.Auth.uniqueKey}), MemberModel.students[index].objectId != "" {
             
-            UdacityAPI.updateLocation(location: location) { (updated, error) in
+            UdacityAPI.updateLocation(mapString: user.mapString, location: location, profileLink: user.mediaURL) { (updated, error) in
                 if updated {
-                    MemberModel.students[index].latitude = location.coordinate.latitude
-                    MemberModel.students[index].longitude = location.coordinate.longitude
-                    print(MemberModel.students.count)
                     self.dismiss(animated: true, completion: nil)
                 }
             }
         } else {
             
-            UdacityAPI.postLocation(location: location) { (created, error) in
+            UdacityAPI.postLocation(mapString: user.mapString, location: location, profileLink: user.mediaURL) { (created, error) in
                 if created {
-                    MemberModel.user.latitude = location.coordinate.latitude
-                    MemberModel.user.longitude = location.coordinate.longitude
-                    MemberModel.user.mediaURL = self.profileLink
-                    MemberModel.students.insert(MemberModel.user, at: 0)
                     self.dismiss(animated: true, completion: nil)
                 }
             }
@@ -45,7 +34,7 @@ class LocationViewController: UIViewController {
         
         mapView.delegate = self
         
-        guard let location = location else { return }
+        let location = CLLocation(latitude: user.latitude, longitude: user.longitude)
         let regionRadius: CLLocationDistance = 500000.0
         let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         mapView.setRegion(region, animated: true)

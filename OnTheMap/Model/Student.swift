@@ -14,17 +14,17 @@ class Student: NSObject, Codable {
     var uniqueKey: String
     var updatedAt: String
     
-    init(createdAt: String, firstName: String, lastName: String, latitude: Double, longitude: Double, mapString: String, mediaURL: String, objectId: String, uniqueKey: String, updatedAt: String) {
-        self.createdAt = createdAt
-        self.firstName = firstName
-        self.lastName = lastName
+    init(latitude: Double, longitude: Double, mapString: String) {
+        self.createdAt = ""
+        self.firstName = ""
+        self.lastName = ""
         self.latitude = latitude
         self.longitude = longitude
         self.mapString = mapString
-        self.mediaURL = mediaURL
-        self.objectId = objectId
-        self.uniqueKey = uniqueKey
-        self.updatedAt = updatedAt
+        self.mediaURL = ""
+        self.objectId = ""
+        self.uniqueKey = ""
+        self.updatedAt = ""
     }
     
 }

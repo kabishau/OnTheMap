@@ -12,18 +12,22 @@ class MapViewController: UIViewController {
         setupNavigationItem()
         
         UdacityAPI.getStudentLocations(completion: handleGetLocationRequest(students:error:))
-        /*
-        let philadelphia = CLLocation(latitude: 39.9526, longitude: -75.1652)
-        let regionRadius: CLLocationDistance = 5000000.0
-        let region = MKCoordinateRegion(center: philadelphia.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
-        mapView.setRegion(region, animated: true)
-         */
+
         mapView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         reloadAnnotations()
+        
+        let regionRadius: CLLocationDistance = 1000000.0
+        if let index = MemberModel.students.firstIndex(where: { $0.uniqueKey == MemberModel.user.uniqueKey}) {
+            let user = MemberModel.students[index]
+            let userLocation = CLLocation(latitude: user.coordinate.latitude, longitude: user.coordinate.longitude)
+            let region = MKCoordinateRegion(center: userLocation.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+            mapView.setRegion(region, animated: true)
+        }
     }
     
     func handleGetLocationRequest(students: [Student], error: Error?) {

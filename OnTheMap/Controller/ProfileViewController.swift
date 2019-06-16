@@ -89,13 +89,8 @@ class ProfileViewController: UIViewController {
                 self?.showAlert(title: "Invalid Location", message: "Can't find provided location. Please check it and try again.")
                 return
             }
-            guard let placemark = placemarks?.first else { return }
-            if let location = placemark.location {
+            if let location = placemarks?.first?.location {
                 self?.user = Student(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, mapString: mapString)
-
-            } else {
-                // show error alert
-                print("Can't geocode address")
             }
             self?.setGeocoding(false)
             self?.performSegue(withIdentifier: "LocationViewController", sender: nil)

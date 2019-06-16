@@ -19,6 +19,7 @@ class UdacityAPI {
         case getLocations
         case postLocation
         case updateLocation
+        case getUserData
        
         var stringValue: String {
             switch self {
@@ -30,6 +31,8 @@ class UdacityAPI {
                 return Endpoints.base + "StudentLocation"
             case .updateLocation:
                 return Endpoints.base + "StudentLocation/" + Auth.objectId
+            case .getUserData:
+                return Endpoints.base + "users/" + Auth.uniqueKey
             }
         }
         
@@ -150,6 +153,29 @@ class UdacityAPI {
                     DispatchQueue.main.async {
                         completion([], error)
                     }
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    class func getUserPublicData(completion: @escaping (User?, Error?) -> Void) {
+        let task = URLSession.shared.dataTask(with: Endpoints.getUserData.url) { (data, response, error) in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            
+            do {
+                let responseObject = try JSONDecoder().decode(User.self, from: data.subdata(in: 5..<data.count))
+                DispatchQueue.main.async {
+                    completion(responseObject, nil)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(nil, error)
                 }
             }
         }

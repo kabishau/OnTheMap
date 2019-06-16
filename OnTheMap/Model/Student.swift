@@ -48,3 +48,14 @@ extension Student: MKAnnotation {
         return mediaURL
     }
 }
+
+struct User: Codable {
+
+    let firstname: String
+    let lastname: String
+    
+    enum CodingKeys: String, CodingKey {
+        case firstname = "first_name"
+        case lastname = "last_name"
+    }
+}

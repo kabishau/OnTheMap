@@ -19,6 +19,16 @@ class LoginViewController: UIViewController {
             
             self.setLoggingIn(false)
             if success {
+                
+                UdacityAPI.getUserPublicData(completion: { (user, error) in
+                    if let user = user {
+                        MemberModel.user = user
+                    }
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                })
+                
                 self.performSegue(withIdentifier: "completeLogin", sender: nil)
             } else {
                 self.showLoginFailure(message: error?.localizedDescription ?? "Unknown Error")

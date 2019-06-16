@@ -12,8 +12,8 @@ struct PostLocationRequest: Codable {
     
     init(mapString: String, location: CLLocation, profileLink: String) {
         self.uniqueKey = UdacityAPI.Auth.uniqueKey
-        self.firstName = "Aleksey"
-        self.lastName = "Kabishau"
+        self.firstName = MemberModel.user!.firstname
+        self.lastName = MemberModel.user!.lastname
         self.mediaURL = profileLink
         self.mapString = mapString
         self.latitude = location.coordinate.latitude

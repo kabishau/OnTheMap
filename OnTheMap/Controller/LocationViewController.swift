@@ -34,13 +34,12 @@ class LocationViewController: UIViewController {
         
         mapView.delegate = self
         
-        let location = CLLocation(latitude: user.latitude, longitude: user.longitude)
-        let regionRadius: CLLocationDistance = 500000.0
-        let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+        let location = CLLocationCoordinate2D(latitude: user.latitude, longitude: user.longitude)
+        let region = MKCoordinateRegion(center: location, span: mapView.region.span)
         mapView.setRegion(region, animated: true)
         
         let annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        annotation.coordinate = location
         mapView.addAnnotation(annotation)
         
     }

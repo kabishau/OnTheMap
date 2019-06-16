@@ -85,6 +85,7 @@ class ProfileViewController: UIViewController {
         guard let mapString = locationTextField.text else { return }
         
         geocoder.geocodeAddressString(mapString) { [weak self] (placemarks, error) in
+            self?.setGeocoding(false)
             if error != nil {
                 self?.showAlert(title: "Invalid Location", message: "Can't find provided location. Please check it and try again.")
                 return
@@ -92,7 +93,6 @@ class ProfileViewController: UIViewController {
             if let location = placemarks?.first?.location {
                 self?.user = Student(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, mapString: mapString)
             }
-            self?.setGeocoding(false)
             self?.performSegue(withIdentifier: "LocationViewController", sender: nil)
             
         }

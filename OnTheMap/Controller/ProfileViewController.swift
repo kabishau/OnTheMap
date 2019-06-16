@@ -7,6 +7,8 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var profileLabel: UILabel!
     @IBOutlet weak var profileLinkTextField: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var findLocationButton: UIButton!
     
     var location: CLLocation?
     var user: Student! = nil
@@ -22,7 +24,7 @@ class ProfileViewController: UIViewController {
             showAlert(title: "Profile Link is blank", message: "Please enter your Profile Link")
             return
         }
-        
+
         geocodeLocation()
     }
     
@@ -33,13 +35,24 @@ class ProfileViewController: UIViewController {
             self.user = MemberModel.students[index]
         }
         
-        setUI(for: self.user)
+        setupUI(for: self.user)
         
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelTapped))
         title = "Add Location"
 
         
+    }
+    
+    func setGeocoding(_ geocoding: Bool) {
+        if geocoding {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
+        locationTextField.isEnabled = !geocoding
+        profileLinkTextField.isEnabled = !geocoding
+        findLocationButton.isEnabled = !geocoding
     }
     
     func showAlert(title: String, message: String) {
@@ -49,7 +62,7 @@ class ProfileViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    func setUI(for user: Student?) {
+    func setupUI(for user: Student?) {
         if let user = user {
             locationLabel.text = "Update Your Location"
             locationTextField.text = user.mapString
@@ -68,6 +81,7 @@ class ProfileViewController: UIViewController {
     }
     
     private func geocodeLocation() {
+        setGeocoding(true)
         guard let mapString = locationTextField.text else { return }
         
         geocoder.geocodeAddressString(mapString) { [weak self] (placemarks, error) in
@@ -83,15 +97,16 @@ class ProfileViewController: UIViewController {
                 // show error alert
                 print("Can't geocode address")
             }
+            self?.setGeocoding(false)
             self?.performSegue(withIdentifier: "LocationViewController", sender: nil)
             
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        self.user.mediaURL = profileLinkTextField.text!
+        user.mediaURL = profileLinkTextField.text!
         if let destinationViewController = segue.destination as? LocationViewController {
-            destinationViewController.user = self.user
+            destinationViewController.user = user
         }
     }
 }

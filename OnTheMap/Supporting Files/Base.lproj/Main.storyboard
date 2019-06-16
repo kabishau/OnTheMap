@@ -103,6 +103,9 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="jzJ-KM-YF0">
+                                <rect key="frame" x="150" y="311.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -111,11 +114,15 @@
                             <constraint firstItem="Pxj-zM-sNJ" firstAttribute="top" secondItem="Bxh-ot-t7P" secondAttribute="top" constant="30" id="LCw-x1-ffx"/>
                             <constraint firstItem="YTp-20-0Ku" firstAttribute="top" secondItem="Pxj-zM-sNJ" secondAttribute="bottom" constant="35" id="P7l-hA-2p1"/>
                             <constraint firstItem="Bxh-ot-t7P" firstAttribute="trailing" secondItem="YTp-20-0Ku" secondAttribute="trailing" constant="50" id="WSZ-rA-xvI"/>
+                            <constraint firstItem="jzJ-KM-YF0" firstAttribute="centerX" secondItem="pMu-ce-Vyh" secondAttribute="centerX" id="hlU-zx-cyH"/>
+                            <constraint firstItem="jzJ-KM-YF0" firstAttribute="top" secondItem="YTp-20-0Ku" secondAttribute="bottom" constant="30" id="qej-rb-cxO"/>
                             <constraint firstItem="YTp-20-0Ku" firstAttribute="centerX" secondItem="pMu-ce-Vyh" secondAttribute="centerX" id="zf7-VS-e92"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bxh-ot-t7P"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="jzJ-KM-YF0" id="lcE-Ey-GwE"/>
+                        <outlet property="findLocationButton" destination="KhL-f0-KvX" id="vYV-3N-SzY"/>
                         <outlet property="locationLabel" destination="c9X-3D-r5n" id="bTt-sD-A34"/>
                         <outlet property="locationTextField" destination="acL-LE-PGN" id="zcw-jr-cM6"/>
                         <outlet property="profileLabel" destination="6K9-HS-euj" id="3Qr-jT-qKT"/>

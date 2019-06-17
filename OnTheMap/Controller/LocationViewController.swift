@@ -35,7 +35,7 @@ class LocationViewController: UIViewController {
         mapView.delegate = self
         
         let location = CLLocationCoordinate2D(latitude: user.latitude, longitude: user.longitude)
-        let region = MKCoordinateRegion(center: location, span: mapView.region.span)
+        let region = MKCoordinateRegion(center: location, latitudinalMeters: 0.9, longitudinalMeters: 0.9)
         mapView.setRegion(region, animated: true)
         
         let annotation = MKPointAnnotation()

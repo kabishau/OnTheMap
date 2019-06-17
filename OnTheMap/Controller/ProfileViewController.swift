@@ -47,12 +47,15 @@ class ProfileViewController: UIViewController {
     func setGeocoding(_ geocoding: Bool) {
         if geocoding {
             activityIndicator.startAnimating()
+            findLocationButton.setTitle("", for: .normal)
         } else {
             activityIndicator.stopAnimating()
+            findLocationButton.setTitle("FIND LOCATION", for: .normal)
         }
         locationTextField.isEnabled = !geocoding
         profileLinkTextField.isEnabled = !geocoding
         findLocationButton.isEnabled = !geocoding
+        
     }
     
     func showAlert(title: String, message: String) {

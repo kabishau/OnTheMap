@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		453746E722AAFF9C005804D8 /* PostLocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453746E622AAFF9C005804D8 /* PostLocationRequest.swift */; };
 		454819C422A9AFC10040F5C3 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454819C322A9AFC10040F5C3 /* LocationViewController.swift */; };
+		454F2F3622B7CB7F000C6D55 /* HTTPStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454F2F3522B7CB7F000C6D55 /* HTTPStatusCode.swift */; };
 		4558F60D229EE989009250FE /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4558F60C229EE989009250FE /* Student.swift */; };
 		456660A922A2EA210051D01B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456660A822A2EA210051D01B /* LoginViewController.swift */; };
 		456660AB22A2ECE50051D01B /* MemberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456660AA22A2ECE50051D01B /* MemberModel.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		453746E622AAFF9C005804D8 /* PostLocationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocationRequest.swift; sourceTree = "<group>"; };
 		454819C322A9AFC10040F5C3 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		454F2F3522B7CB7F000C6D55 /* HTTPStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPStatusCode.swift; sourceTree = "<group>"; };
 		4558F60C229EE989009250FE /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		456660A822A2EA210051D01B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		456660AA22A2ECE50051D01B /* MemberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModel.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				5B9543AB22AB4D2100AC40E3 /* PostLocationResponse.swift */,
 				5BC8EADD22ADAA4500FAF10C /* UpdateLocationResponse.swift */,
 				459ED03022B3E69E0088956B /* locationsErrorResponse.swift */,
+				454F2F3522B7CB7F000C6D55 /* HTTPStatusCode.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				456660A922A2EA210051D01B /* LoginViewController.swift in Sources */,
 				5B51AB0A22A62E2C00053C9C /* LoginResponse.swift in Sources */,
 				5B908FCE229E238500F843DA /* UserViewController.swift in Sources */,
+				454F2F3622B7CB7F000C6D55 /* HTTPStatusCode.swift in Sources */,
 				4558F60D229EE989009250FE /* Student.swift in Sources */,
 				5B51AB0E22A8C26400053C9C /* ProfileViewController.swift in Sources */,
 				454819C422A9AFC10040F5C3 /* LocationViewController.swift in Sources */,

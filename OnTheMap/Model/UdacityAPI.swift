@@ -193,21 +193,33 @@ class UdacityAPI {
         request.httpBody = try! JSONEncoder().encode(body)
 
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard let data = data else {
-                DispatchQueue.main.async {
-                    completion(false, error)
-                }
+            
+            if let error = error {
+                completion(false, error)
                 return
             }
-            do {
-                let responseObject = try JSONDecoder().decode(PostLocationResponse.self, from: data)
-                
-                Auth.objectId = responseObject.objectId
-                DispatchQueue.main.async {
-                    completion(true, nil)
-                }
-            } catch {
-                DispatchQueue.main.async {
+            
+            if let httpStatusCode = (response as? HTTPURLResponse)?.statusCode {
+                if httpStatusCode >= 200 && httpStatusCode < 300 {
+                    guard let data = data else {
+                        DispatchQueue.main.async {
+                            completion(false, error)
+                        }
+                        return
+                    }
+                    do {
+                        let responseObject = try JSONDecoder().decode(PostLocationResponse.self, from: data)
+                        
+                        Auth.objectId = responseObject.objectId
+                        DispatchQueue.main.async {
+                            completion(true, nil)
+                        }
+                    } catch {
+                        DispatchQueue.main.async {
+                            completion(false, error)
+                        }
+                    }
+                } else {
                     completion(false, error)
                 }
             }
@@ -225,20 +237,34 @@ class UdacityAPI {
         request.httpBody = try! JSONEncoder().encode(body)
 
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard let data = data else {
-                DispatchQueue.main.async {
-                    completion(false, error)
-                }
+            
+            if let error = error {
+                completion(false, error)
                 return
             }
-            do {
-                let responseObject = try JSONDecoder().decode(UpdateLocationResponse.self, from: data)
-                // error of updating location
-                DispatchQueue.main.async {
-                    completion(true, nil)
-                }
-            } catch {
-                DispatchQueue.main.async {
+            
+            if let httpStatusCode = (response as? HTTPURLResponse)?.statusCode {
+                if httpStatusCode >= 200 && httpStatusCode < 300 {
+                    guard let data = data else {
+                        DispatchQueue.main.async {
+                            completion(false, error)
+                        }
+                        return
+                    }
+                    do {
+                        let responseObject = try JSONDecoder().decode(UpdateLocationResponse.self, from: data)
+                        if responseObject.updatedAt != "" {
+                            DispatchQueue.main.async {
+                                completion(true, nil)
+                            }
+                        }
+                        
+                    } catch {
+                        DispatchQueue.main.async {
+                            completion(false, error)
+                        }
+                    }
+                } else {
                     completion(false, error)
                 }
             }

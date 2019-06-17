@@ -163,10 +163,10 @@
                         <constraints>
                             <constraint firstItem="mxP-me-57P" firstAttribute="bottom" secondItem="KGB-qo-EK6" secondAttribute="bottom" constant="85" id="5aW-m1-MY0"/>
                             <constraint firstItem="adU-W7-9J2" firstAttribute="trailing" secondItem="mxP-me-57P" secondAttribute="trailing" id="6k4-kK-KwV"/>
-                            <constraint firstItem="mxP-me-57P" firstAttribute="trailing" secondItem="KGB-qo-EK6" secondAttribute="trailing" constant="55" id="NRl-FY-BBE"/>
+                            <constraint firstItem="mxP-me-57P" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="KGB-qo-EK6" secondAttribute="trailing" constant="55" id="NRl-FY-BBE"/>
                             <constraint firstItem="KGB-qo-EK6" firstAttribute="centerX" secondItem="wn5-Ts-NnB" secondAttribute="centerX" id="SqD-Tf-mFg"/>
                             <constraint firstItem="adU-W7-9J2" firstAttribute="bottom" secondItem="mxP-me-57P" secondAttribute="bottom" id="eZP-9Q-CZD"/>
-                            <constraint firstItem="KGB-qo-EK6" firstAttribute="leading" secondItem="mxP-me-57P" secondAttribute="leading" constant="55" id="tSc-Ci-Tys"/>
+                            <constraint firstItem="KGB-qo-EK6" firstAttribute="leading" relation="lessThanOrEqual" secondItem="mxP-me-57P" secondAttribute="leading" constant="55" id="tSc-Ci-Tys"/>
                             <constraint firstItem="adU-W7-9J2" firstAttribute="leading" secondItem="mxP-me-57P" secondAttribute="leading" id="wlk-jk-DcU"/>
                             <constraint firstItem="adU-W7-9J2" firstAttribute="top" secondItem="wn5-Ts-NnB" secondAttribute="top" id="z3A-ev-Xyr"/>
                         </constraints>
